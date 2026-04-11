@@ -1,0 +1,129 @@
+/* =============================================
+   LA CAVE — Feuille de style principale
+   Auteur : [Ton Nom] (Chef d'équipe)
+   ============================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Lato:wght@300;400&display=swap');
+
+/* --- Variables globales --- */
+:root {
+  --couleur-principale : #722F37;  /* Bordeaux */
+  --couleur-or         : #C9A84C;  /* Or */
+  --couleur-creme      : #FAF3E0;  /* Crème */
+  --couleur-sombre     : #1a1a1a;  /* Noir doux */
+  --couleur-texte      : #333333;
+  --police-titre       : 'Cormorant Garamond', serif;
+  --police-corps       : 'Lato', sans-serif;
+}
+
+/* --- Réinitialisation --- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: var(--police-corps);
+  color: var(--couleur-texte);
+  background-color: var(--couleur-creme);
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+/* =============================================
+   BARRE DE NAVIGATION
+   ============================================= */
+nav {
+  background-color: var(--couleur-sombre);
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+nav .logo {
+  font-family: var(--police-titre);
+  font-size: 1.8rem;
+  color: var(--couleur-or);
+  letter-spacing: 2px;
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 2rem;
+}
+
+nav ul li a {
+  color: var(--couleur-creme);
+  font-size: 0.95rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: color 0.3s;
+}
+
+nav ul li a:hover,
+nav ul li a.actif {
+  color: var(--couleur-or);
+}
+
+/* =============================================
+   PIED DE PAGE
+   ============================================= */
+footer {
+  background-color: var(--couleur-sombre);
+  color: var(--couleur-creme);
+  text-align: center;
+  padding: 2rem;
+  margin-top: 4rem;
+  font-size: 0.85rem;
+}
+
+footer a {
+  color: var(--couleur-or);
+}
+
+/* =============================================
+   BOUTONS
+   ============================================= */
+.btn-principal {
+  background-color: var(--couleur-principale);
+  color: var(--couleur-creme);
+  padding: 0.75rem 2rem;
+  border: none;
+  font-family: var(--police-corps);
+  font-size: 1rem;
+  letter-spacing: 1px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.btn-principal:hover {
+  background-color: var(--couleur-or);
+  color: var(--couleur-sombre);
+}
+
+/* =============================================
+   TITRE DE SECTION
+   ============================================= */
+.titre-section {
+  font-family: var(--police-titre);
+  font-size: 2.2rem;
+  color: var(--couleur-principale);
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.sous-titre-section {
+  text-align: center;
+  color: #777;
+  margin-bottom: 2.5rem;
+  font-size: 0.95rem;
+}
