@@ -5,12 +5,8 @@ Objectif : collaborer via Git et GitHub pour développer un site web statique.
 
 ## 👥 Équipe
 
-| Membre | Rôle | Branche |
-|--------|------|---------|
-| [Ton Nom] | Chef d'équipe — Page Accueil | `feature/accueil` |
-| [Membre 2] | Page Boutique | `feature/boutique` |
-| [Membre 3] | Page À Propos | `feature/a-propos` |
-| [Membre 4] | Page Contact | `feature/contact` |
-| [Membre 5] | CSS Global + Navbar/Footer | `feature/styles` |
-
-## 🗂️ Structure du projet
+Membre 1     → index.html + style.css (toutes les classes)
+Membre 2     → script.js (filtrer + envoyerMessage)
+Membre 3     → shop.html (structure HTML seulement)
+Membre 4     → a-propos.html (structure HTML seulement)
+Membre 5     → contact.html (structure HTML seulement)
