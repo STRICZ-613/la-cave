@@ -1,1 +1,97 @@
 
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Boutique - La Cave</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@600&family=Lato&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <nav>
+        <div class="logo">🍷 La Cave</div>
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="shop.html" class="actif">Boutique</a></li>
+            <li><a href="a-propos.html">À Propos</a></li>
+            <li><a href="contact.html">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <section class="boutique">
+            <h1 class="titre-section">Notre Boutique</h1>
+            <p class="sous-titre-section">Tous nos vins disponibles à la commande</p>
+
+            <div class="filtres">
+                <button onclick="filtrer('tous')" class="btn-filtre actif-filtre">Tous</button>
+                <button onclick="filtrer('rouge')" class="btn-filtre">Rouges</button>
+                <button onclick="filtrer('blanc')" class="btn-filtre">Blancs</button>
+                <button onclick="filtrer('champagne')" class="btn-filtre">Champagne</button>
+            </div>
+
+            <div id="grille-boutique" class="grille-vins">
+                
+                <div class="carte-vin" data-categorie="rouge">
+                    <img src="images/rouge1.jpg" alt="Vin Rouge">
+                    <h3>Château Prestige</h3>
+                    <p>Vin rouge — Bordeaux</p>
+                    <span class="prix">45 000 FCFA</span>
+                    <button class="btn-principal">Ajouter au panier</button>
+                </div>
+
+                <div class="carte-vin" data-categorie="blanc">
+                    <img src="images/blanc1.jpg" alt="Vin Blanc">
+                    <h3>Éclat de Loire</h3>
+                    <p>Vin blanc — Loire</p>
+                    <span class="prix">35 000 FCFA</span>
+                    <button class="btn-principal">Ajouter au panier</button>
+                </div>
+
+                <div class="carte-vin" data-categorie="champagne">
+                    <img src="images/champagne1.jpg" alt="Champagne">
+                    <h3>Bulles d'Or</h3>
+                    <p>Champagne — Reims</p>
+                    <span class="prix">85 000 FCFA</span>
+                    <button class="btn-principal">Ajouter au panier</button>
+                </div>
+
+                <div class="carte-vin" data-categorie="rouge">
+                    <img src="images/rouge2.jpg" alt="Vin Rouge">
+                    <h3>Rubis Impérial</h3>
+                    <p>Vin rouge — Bourgogne</p>
+                    <span class="prix">60 000 FCFA</span>
+                    <button class="btn-principal">Ajouter au panier</button>
+                </div>
+
+                <div class="carte-vin" data-categorie="blanc">
+                    <img src="images/blanc2.jpg" alt="Vin Blanc">
+                    <h3>Perle d'Alsace</h3>
+                    <p>Vin blanc — Alsace</p>
+                    <span class="prix">28 000 FCFA</span>
+                    <button class="btn-principal">Ajouter au panier</button>
+                </div>
+
+                <div class="carte-vin" data-categorie="champagne">
+                    <img src="images/champagne2.jpg" alt="Champagne">
+                    <h3>Cuvée Royale</h3>
+                    <p>Champagne — Épernay</p>
+                    <span class="prix">120 000 FCFA</span>
+                    <button class="btn-principal">Ajouter au panier</button>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 La Cave — Tous droits réservés</p>
+        <p>Fait avec ❤️ par <a href="a-propos.html">notre équipe</a></p>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
+
