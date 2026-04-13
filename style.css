@@ -583,40 +583,106 @@ footer {
 /* =============================================
    PAGE À PROPOS — a-propos.html (Membre 4)
    ============================================= */
+/* =============================================
+   PAGE À PROPOS — a-propos.html (Membre 4)
+   ============================================= */
+
+/* Hero bannière avec winery-1.jpg */
+.apropos-hero {
+  position: relative;
+  height: 55vh;
+  min-height: 400px;
+  background-image: url('images/winery-1.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.apropos-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(10,5,5,0.6) 0%,
+    rgba(10,5,5,0.45) 60%,
+    rgba(10,5,5,0.7) 100%
+  );
+}
+
+.apropos-hero-contenu {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #fff;
+}
+
+.apropos-hero-titre {
+  font-family: var(--police-titre);
+  font-size: 3.5rem;
+  font-weight: 600;
+  color: #fff;
+  margin: 0.5rem 0;
+}
+
+.apropos-hero-sous-titre {
+  color: rgba(255,255,255,0.7);
+  font-size: 0.95rem;
+  letter-spacing: 1px;
+  font-weight: 300;
+  margin-top: 0.75rem;
+}
+
+/* Section Histoire */
 .histoire {
   padding: 6rem 4rem;
-  background-color: #fff;
+  background-color: var(--couleur-creme);
 }
 
 .histoire-contenu {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 4rem;
+  gap: 5rem;
   align-items: center;
   max-width: 1100px;
   margin: 0 auto;
 }
 
+.histoire-image-wrapper {
+  height: 520px;
+  overflow: hidden;
+  box-shadow: var(--ombre-forte);
+}
+
 .image-histoire {
   width: 100%;
-  height: 450px;
+  height: 100%;
   object-fit: cover;
-  box-shadow: var(--ombre-forte);
+  object-position: center;
+  transition: transform 0.8s ease;
+}
+
+.histoire-image-wrapper:hover .image-histoire {
+  transform: scale(1.04);
 }
 
 .texte-histoire p {
   color: #666;
   line-height: 1.9;
-  margin-bottom: 1rem;
+  margin-bottom: 1.2rem;
   font-size: 0.95rem;
 }
 
+/* Section Équipe */
 .equipe {
   padding: 6rem 4rem;
-  background-color: var(--couleur-creme);
+  background-color: #fff;
 }
 
-.grille-equipe {
+/* Grille 5 membres : 3 en haut, 2 centrés en bas */
+.grille-equipe-5 {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 2rem;
@@ -624,8 +690,18 @@ footer {
   margin: 0 auto;
 }
 
+.grille-equipe-5 .carte-membre:nth-child(4) {
+  grid-column: 1;
+  margin-left: 50%;
+}
+
+.grille-equipe-5 .carte-membre:nth-child(5) {
+  grid-column: 2;
+}
+
+/* Carte membre */
 .carte-membre {
-  background-color: #fff;
+  background-color: var(--couleur-creme);
   padding: 2rem;
   text-align: center;
   box-shadow: var(--ombre);
@@ -637,13 +713,37 @@ footer {
   box-shadow: var(--ombre-forte);
 }
 
-.carte-membre img {
+/* Wrapper commun photo/placeholder */
+.membre-photo-wrapper {
   width: 120px;
   height: 120px;
   border-radius: 50%;
-  object-fit: cover;
   margin: 0 auto 1rem;
   border: 3px solid var(--couleur-or);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Photo réelle */
+.membre-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* Placeholder initiales */
+.membre-placeholder {
+  background-color: var(--couleur-sombre);
+}
+
+.membre-initiales {
+  font-family: var(--police-titre);
+  font-size: 1.8rem;
+  color: var(--couleur-or);
+  font-weight: 600;
 }
 
 .carte-membre h3 {

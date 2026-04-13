@@ -1,107 +1,177 @@
-```html
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>À Propos — La Cave</title>
-    <!-- Polices Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
-    <!-- Font Awesome pour les icônes -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <!-- Fichier CSS principal -->
-    <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>À Propos — La Cave</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
 </head>
 <body>
 
-    <!-- Barre de navigation (Identique à index.html) -->
-    <nav>
-        <div class="logo">🍷 La Cave</div>
-        <ul>
-            <li><a href="index.html">Accueil</a></li>
-            <li><a href="shop.html">Boutique</a></li>
-            <li><a href="a-propos.html" class="actif">À Propos</a></li>
-            <li><a href="contact.html">Contact</a></li>
-        </ul>
-    </nav>
+  <!-- ========== NAVIGATION ========== -->
+  <nav>
+    <a href="index.html" class="logo-nav">
+      <img src="images/logo-2.png" alt="La Cave" class="logo-img" />
+      <span class="logo-texte">LA CAVE</span>
+    </a>
+    <ul>
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="shop.html">Boutique</a></li>
+      <li><a href="a-propos.html" class="actif">À Propos</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+  </nav>
 
-    <main>
-        <!-- SECTION 1 : Notre Histoire -->
-        <section class="histoire">
-            <h2 class="titre-section">Notre Histoire</h2>
-            <div class="histoire-contenu">
-                <!-- Image de vigne ou cave (placeholder si non fournie par Membre 1) -->
-                <img src="https://images.unsplash.com/photo-1506377247377-2a5b3b0ca7ef?auto=format&fit=crop&w=800&q=80" alt="Nos vignobles" class="image-histoire">
-                
-                <div class="texte-histoire">
-                    <p>
-                        Fondée en 2010, **La Cave** est née d'une passion dévorante pour les grands crus et l'art de la vinification. Ce qui n'était au départ qu'une petite sélection personnelle est devenu, au fil des années, une référence pour les amateurs de vins d'exception.
-                    </p>
-                    <p>
-                        Nous travaillons en collaboration directe avec des vignerons passionnés en France, en Italie et en Espagne. Chaque bouteille de notre collection est choisie avec soin pour garantir une expérience gustative unique, respectant le terroir et le savoir-faire ancestral de nos partenaires.
-                    </p>
-                </div>
-            </div>
-        </section>
+  <!-- ========== CONTENU PRINCIPAL ========== -->
+  <main>
 
-        <!-- SECTION 2 : Notre Équipe -->
-        <section class="equipe">
-            <h2 class="titre-section">Notre Équipe</h2>
-            <div class="grille-equipe">
-                <!-- Membre 1 -->
-                <div class="carte-membre">
-                    <img src="https://i.pravatar.cc/150?u=1" alt="Jean Dupont">
-                    <h3>Jean Dupont</h3>
-                    <p>Fondateur & Sommelier</p>
-                </div>
-                <!-- Membre 2 -->
-                <div class="carte-membre">
-                    <img src="https://i.pravatar.cc/150?u=2" alt="Marie Claire">
-                    <h3>Marie Claire</h3>
-                    <p>Responsable Achats</p>
-                </div>
-                <!-- Membre 3 -->
-                <div class="carte-membre">
-                    <img src="https://i.pravatar.cc/150?u=3" alt="Lucas Rossi">
-                    <h3>Lucas Rossi</h3>
-                    <p>Expert en Vins Ibériques</p>
-                </div>
-            </div>
-        </section>
+    <!-- ===== HERO BANNIÈRE — winery-1.jpg (tonneaux) ===== -->
+    <section class="apropos-hero">
+      <div class="apropos-hero-overlay"></div>
+      <div class="apropos-hero-contenu">
+        <p class="label-section">Notre Maison</p>
+        <h1 class="apropos-hero-titre">L'Âme de La Cave</h1>
+        <p class="apropos-hero-sous-titre">Une passion transmise, un savoir-faire préservé</p>
+      </div>
+    </section>
 
-        <!-- SECTION 3 : Nos Valeurs -->
-        <section class="valeurs">
-            <h2 class="titre-section">Nos Valeurs</h2>
-            <div class="grille-valeurs">
-                <!-- Valeur 1 : Qualité -->
-                <div class="carte-valeur">
-                    <i class="fa-solid fa-wine-bottle"></i>
-                    <h3>Qualité</h3>
-                    <p>Une sélection rigoureuse des meilleurs cépages pour une excellence constante dans chaque verre.</p>
-                </div>
-                <!-- Valeur 2 : Confiance -->
-                <div class="carte-valeur">
-                    <i class="fa-solid fa-handshake"></i>
-                    <h3>Confiance</h3>
-                    <p>Une relation transparente avec nos vignerons et nos clients pour un service irréprochable.</p>
-                </div>
-                <!-- Valeur 3 : Durabilité -->
-                <div class="carte-valeur">
-                    <i class="fa-solid fa-leaf"></i>
-                    <h3>Durabilité</h3>
-                    <p>Engagement pour une viticulture respectueuse de l'environnement et des cycles naturels.</p>
-                </div>
-            </div>
-        </section>
-    </main>
+    <!-- ===== SECTION NOTRE HISTOIRE ===== -->
+    <section class="histoire">
+      <div class="histoire-contenu">
 
-    <!-- Pied de page (Identique à index.html) -->
-    <footer>
-        <p>&copy; 2025 La Cave — Tous droits réservés</p>
-        <p>Fait avec ❤️ par <a href="a-propos.html">notre équipe</a></p>
-    </footer>
+        <div class="histoire-image-wrapper">
+          <img src="images/winery-2.jpg" alt="Notre cave à vins" class="image-histoire" />
+        </div>
 
-    <!-- Script JS (si nécessaire pour des interactions globales) -->
-    <script src="script.js"></script>
+        <div class="texte-histoire">
+          <p class="label-section" style="text-align:left;">Notre Histoire</p>
+          <h2 class="titre-section-gauche">Une Passion<br/>Née à Yaoundé</h2>
+          <p>
+            Fondée avec ambition au cœur de Yaoundé, dans le quartier animé de
+            <strong>Titi Garage</strong>, La Cave est bien plus qu'une simple boutique
+            de vins. C'est un projet né d'une vision commune : rendre accessible
+            l'excellence viticole à ceux qui savent l'apprécier.
+          </p>
+          <p>
+            Aujourd'hui fière partenaire du <strong>Collège de Paris</strong>, notre maison
+            sélectionne avec rigueur chaque bouteille auprès de vignerons passionnés
+            de France, d'Italie et d'Espagne — pour vous offrir une expérience
+            gustative unique, respectant le terroir et les traditions ancestrales.
+          </p>
+          <p>
+            Ce qui n'était au départ qu'une petite sélection personnelle est devenu,
+            au fil des années, une référence incontournable pour les amateurs de
+            grands crus à Yaoundé et au-delà.
+          </p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== SECTION NOTRE ÉQUIPE ===== -->
+    <section class="equipe">
+      <p class="label-section">Les Visages de La Cave</p>
+      <h2 class="titre-section">Notre Équipe</h2>
+      <p class="sous-titre-section">Cinq passionnés unis par l'amour du vin</p>
+
+      <div class="grille-equipe-5">
+
+        <!-- Membre 1 — Photo réelle -->
+        <div class="carte-membre">
+          <div class="membre-photo-wrapper">
+            <img src="images/photo_1.jpeg" alt="Ndoke Dodo Yann" class="membre-photo" />
+          </div>
+          <h3>Ndoke Dodo Yann</h3>
+          <p>Fondateur &amp; Chef de Projet</p>
+        </div>
+
+        <!-- Membre 2 — Placeholder -->
+        <div class="carte-membre">
+          <div class="membre-photo-wrapper membre-placeholder">
+            <span class="membre-initiales">M2</span>
+          </div>
+          <h3>Membre 2</h3>
+          <p>Développeur JavaScript</p>
+        </div>
+
+        <!-- Membre 3 — Placeholder -->
+        <div class="carte-membre">
+          <div class="membre-photo-wrapper membre-placeholder">
+            <span class="membre-initiales">M3</span>
+          </div>
+          <h3>Membre 3</h3>
+          <p>Responsable Boutique</p>
+        </div>
+
+        <!-- Membre 4 — Placeholder -->
+        <div class="carte-membre">
+          <div class="membre-photo-wrapper membre-placeholder">
+            <span class="membre-initiales">M4</span>
+          </div>
+          <h3>Membre 4</h3>
+          <p>Responsable À Propos</p>
+        </div>
+
+        <!-- Membre 5 — Placeholder -->
+        <div class="carte-membre">
+          <div class="membre-photo-wrapper membre-placeholder">
+            <span class="membre-initiales">M5</span>
+          </div>
+          <h3>Membre 5</h3>
+          <p>Responsable Contact</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ===== SECTION NOS VALEURS ===== -->
+    <section class="valeurs">
+      <p class="label-section">Ce Qui Nous Définit</p>
+      <h2 class="titre-section">Nos Valeurs</h2>
+      <p class="sous-titre-section">Ce qui nous guide au quotidien</p>
+      <div class="grille-valeurs">
+
+        <div class="carte-valeur">
+          <i class="fa-solid fa-wine-bottle"></i>
+          <h3>Qualité</h3>
+          <p>Une sélection rigoureuse des meilleurs cépages pour une excellence constante dans chaque verre.</p>
+        </div>
+
+        <div class="carte-valeur">
+          <i class="fa-solid fa-handshake"></i>
+          <h3>Confiance</h3>
+          <p>Une relation transparente avec nos vignerons et nos clients pour un service irréprochable.</p>
+        </div>
+
+        <div class="carte-valeur">
+          <i class="fa-solid fa-leaf"></i>
+          <h3>Durabilité</h3>
+          <p>Engagement pour une viticulture respectueuse de l'environnement et des cycles naturels.</p>
+        </div>
+
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ========== PIED DE PAGE ========== -->
+  <footer>
+    <div class="footer-contenu">
+      <img src="images/logo-2.png" alt="La Cave" class="footer-logo-img" />
+      <div class="footer-liens">
+        <a href="index.html">Accueil</a>
+        <a href="shop.html">Boutique</a>
+        <a href="a-propos.html">À Propos</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bas">
+      <p>&copy; 2025 La Cave — Tous droits réservés</p>
+      <p>Fait avec ❤️ par <a href="a-propos.html">notre équipe</a></p>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
 </body>
 </html>
