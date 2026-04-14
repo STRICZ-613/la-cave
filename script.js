@@ -72,7 +72,7 @@ function envoyerMessage() {
     confirmation.style.right = "20px";
     confirmation.style.background = "#4CAF50";
     confirmation.style.color = "white";
-    confirmation.style.padding = "10px 20px";
+    confirmation.style.padding = "10px 25px";
     confirmation.style.borderRadius = "5px";
     confirmation.style.boxShadow = "0 2px 6px rgba(0,0,0,0.3)";
     confirmation.style.zIndex = "1000";
