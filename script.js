@@ -1,85 +1,225 @@
-/**
- * PROJET LA CAVE - script.js
- * Rôle : Membre 2 (Interactivité du site)
- */
+// ================================================================
+// script.js — La Cave
+// Toute la logique JavaScript du site
+// Auteur : Membre 2
+// ================================================================
 
-// --- FONCTION 1 : Filtre de la boutique ---
+// Variable globale pour stocker les données du vin actuellement ouvert
+let vinActuel = {};
+
+// ================================================================
+// FONCTION 1 : filtrer(categorie)
+// Filtre les cartes de vins par catégorie dans la boutique
+// ================================================================
 function filtrer(categorie) {
-    // 1. Récupérer toutes les cartes de vin et les boutons
-    const cartes = document.querySelectorAll('.carte-vin');
-    const boutons = document.querySelectorAll('.btn-filtre');
+  // Récupérer toutes les cartes de vins
+  const cartes = document.querySelectorAll('#grille-boutique [data-categorie]');
 
-    // 2. Gérer l'affichage des cartes
-    cartes.forEach(carte => {
-        const categorieCarte = carte.getAttribute('data-categorie');
+  // Afficher ou masquer chaque carte selon la catégorie
+  cartes.forEach(function(carte) {
+    if (categorie === 'tous' || carte.dataset.categorie === categorie) {
+      carte.style.display = 'block';
+    } else {
+      carte.style.display = 'none';
+    }
+  });
 
-        if (categorie === 'tous' || categorie === categorieCarte) {
-            // Afficher la carte avec un petit effet de transition
-            carte.style.display = 'block';
-            carte.style.opacity = 1;
-        } else {
-            // Cacher la carte avec effet fondu
-            carte.style.opacity = 0;
-            setTimeout(() => {
-                carte.style.display = 'none';
-            }, 300); // délai pour laisser l’effet se jouer
-        }
-    });
-
-    // 3. Gérer l'apparence des boutons (classe active)
-    boutons.forEach(btn => {
-        btn.classList.remove('actif-filtre');
-        // Vérification plus robuste : comparer directement la valeur du data-categorie
-        if (btn.dataset.categorie === categorie) {
-            btn.classList.add('actif-filtre');
-        }
-    });
+  // Mettre à jour la classe active sur les boutons de filtre
+  const boutons = document.querySelectorAll('.btn-filtre');
+  boutons.forEach(function(btn) {
+    btn.classList.remove('actif-filtre');
+    if (btn.dataset.filtre === categorie || btn.getAttribute('onclick') === "filtrer('" + categorie + "')") {
+      btn.classList.add('actif-filtre');
+    }
+  });
 }
 
-// --- FONCTION 2 : Validation du formulaire de contact ---
+// ================================================================
+// FONCTION 2 : envoyerMessage()
+// Gère l'envoi du formulaire de contact
+// ================================================================
 function envoyerMessage() {
-    // 1. Récupération des éléments HTML
-    const nom = document.getElementById('nom');
-    const email = document.getElementById('email');
-    const sujet = document.getElementById('sujet');
-    const message = document.getElementById('message');
+  // Lire les valeurs des champs
+  const nom = document.getElementById('nom').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const sujet = document.getElementById('sujet').value.trim();
+  const message = document.getElementById('message').value.trim();
 
-    // 2. Vérification que les champs ne sont pas vides
-    if (!nom.value.trim() || !email.value.trim() || 
-        !sujet.value.trim() || !message.value.trim()) {
-        alert("Erreur : Veuillez remplir tous les champs du formulaire.");
-        return;
-    }
+  // Vérifier que tous les champs sont remplis
+  if (!nom || !email || !sujet || !message) {
+    alert('Veuillez remplir tous les champs.');
+    return;
+  }
 
-    // 3. Vérification du format de l'email avec regex plus robuste
-    const regexEmail = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!regexEmail.test(email.value)) {
-        alert("Erreur : Veuillez entrer une adresse email valide.");
-        return;
-    }
+  // Vérifier que l'email contient un "@"
+  if (!email.includes('@')) {
+    alert('Adresse email invalide.');
+    return;
+  }
 
-    // 4. Succès : Affichage du message de confirmation
-    alert(`Merci ${nom.value}, votre message a bien été envoyé !`);
-
-    // 5. Vider les champs après l'envoi
-    [nom, email, sujet, message].forEach(input => input.value = "");
-
-    // 6. Effet spécial : petite animation de confirmation
-    const confirmation = document.createElement('div');
-    confirmation.textContent = "✔ Message envoyé avec succès !";
-    confirmation.style.position = "fixed";
-    confirmation.style.bottom = "20px";
-    confirmation.style.right = "20px";
-    confirmation.style.background = "#4CAF50";
-    confirmation.style.color = "white";
-    confirmation.style.padding = "10px 25px";
-    confirmation.style.borderRadius = "5px";
-    confirmation.style.boxShadow = "0 2px 6px rgba(0,0,0,0.3)";
-    confirmation.style.zIndex = "1000";
-    document.body.appendChild(confirmation);
-
-    setTimeout(() => {
-        confirmation.style.opacity = "0";
-        setTimeout(() => confirmation.remove(), 500);
-    }, 2000);
+  // Si tout est OK, confirmer et vider les champs
+  alert('Merci ' + nom + ', votre message a bien été envoyé !');
+  document.getElementById('nom').value = '';
+  document.getElementById('email').value = '';
+  document.getElementById('sujet').value = '';
+  document.getElementById('message').value = '';
 }
+
+// ================================================================
+// FONCTION 3 : ouvrirModal(carte)
+// Ouvre la modale avec les détails d'un vin
+// ================================================================
+function ouvrirModal(carte) {
+  // Stocker les données du vin dans la variable globale
+  vinActuel = carte.dataset;
+
+  // Remplir les éléments de la modale
+  document.getElementById('modal-img').src = carte.dataset.image;
+  document.getElementById('modal-img').alt = carte.dataset.nom;
+  document.getElementById('modal-nom').textContent = carte.dataset.nom;
+  document.getElementById('modal-categorie').textContent = carte.dataset.categorie;
+  document.getElementById('modal-categorie').className = 'carte-categorie ' + carte.dataset.categorie;
+  document.getElementById('modal-type-region').textContent = carte.dataset.type + ' — ' + carte.dataset.region;
+  document.getElementById('modal-description').textContent = carte.dataset.description;
+  document.getElementById('modal-prix').textContent = carte.dataset.prix;
+
+  // Afficher la modale
+  document.getElementById('modal-overlay').classList.add('actif');
+
+  // Bloquer le scroll de la page
+  document.body.style.overflow = 'hidden';
+}
+
+// ================================================================
+// FONCTION 4 : fermerModal()
+// Ferme la modale et réactive le scroll
+// ================================================================
+function fermerModal() {
+  // Retirer la classe 'actif' pour masquer la modale
+  document.getElementById('modal-overlay').classList.remove('actif');
+
+  // Réactiver le scroll de la page
+  document.body.style.overflow = '';
+}
+
+// ================================================================
+// FONCTION 5 : ajouterPanier(nom, prix, image)
+// Ajoute un article au panier stocké dans localStorage
+// ================================================================
+function ajouterPanier(nom, prix, image) {
+  // Lire le panier existant depuis localStorage
+  let panier = JSON.parse(localStorage.getItem('panier-lacave')) || [];
+
+  // Chercher si l'article existe déjà dans le panier
+  const articleExistant = panier.find(function(article) {
+    return article.nom === nom;
+  });
+
+  if (articleExistant) {
+    // Si l'article existe, augmenter la quantité de 1
+    articleExistant.quantite += 1;
+  } else {
+    // Sinon, ajouter le nouvel article avec quantité 1
+    panier.push({
+      nom: nom,
+      prix: prix,
+      image: image,
+      quantite: 1
+    });
+  }
+
+  // Sauvegarder le panier mis à jour dans localStorage
+  localStorage.setItem('panier-lacave', JSON.stringify(panier));
+
+  // Mettre à jour le compteur dans la navbar
+  mettreAJourCompteurPanier();
+
+  // Afficher le popup de confirmation
+  afficherPopup();
+}
+
+// ================================================================
+// FONCTION 6 : ajouterDepuisModal()
+// Ajoute au panier le vin actuellement ouvert dans la modale
+// ================================================================
+function ajouterDepuisModal() {
+  // Appeler ajouterPanier avec les données du vin actuel
+  ajouterPanier(vinActuel.nom, vinActuel.prix, vinActuel.image);
+
+  // Fermer la modale
+  fermerModal();
+}
+
+// ================================================================
+// FONCTION 7 : afficherPopup()
+// Affiche une notification en bas à droite de l'écran
+// ================================================================
+function afficherPopup() {
+  // Supprimer tout popup existant
+  const ancienPopup = document.getElementById('popup-panier');
+  if (ancienPopup) {
+    ancienPopup.remove();
+  }
+
+  // Créer le div du popup
+  const popup = document.createElement('div');
+  popup.id = 'popup-panier';
+
+  // Contenu du popup : message + lien vers le panier
+  popup.innerHTML = '✓ Ajouté au panier <a href="panier.html" style="color:#C9A84C; text-decoration:none; font-weight:bold;">Voir le Panier →</a>';
+
+  // Appliquer les styles inline
+  popup.style.position = 'fixed';
+  popup.style.background = '#1a1a1a';
+  popup.style.color = '#FAF3E0';
+  popup.style.padding = '0.75rem 1.25rem';
+  popup.style.borderLeft = '3px solid #C9A84C';
+  popup.style.fontSize = '0.85rem';
+  popup.style.zIndex = '9999';
+  popup.style.display = 'flex';
+  popup.style.gap = '1rem';
+  popup.style.alignItems = 'center';
+  popup.style.bottom = '2rem';
+  popup.style.right = '2rem';
+  popup.style.borderRadius = '4px';
+  popup.style.boxShadow = '0 4px 12px rgba(0,0,0,0.3)';
+
+  // Ajouter le popup au body
+  document.body.appendChild(popup);
+
+  // Supprimer automatiquement après 3 secondes
+  setTimeout(function() {
+    if (popup.parentNode) {
+      popup.remove();
+    }
+  }, 3000);
+}
+
+// ================================================================
+// FONCTION 8 : mettreAJourCompteurPanier()
+// Met à jour le badge compteur du panier dans la navbar
+// ================================================================
+function mettreAJourCompteurPanier() {
+  // Lire le panier depuis localStorage
+  const panier = JSON.parse(localStorage.getItem('panier-lacave')) || [];
+
+  // Calculer le nombre total d'articles (somme des quantités)
+  const total = panier.reduce(function(acc, article) {
+    return acc + article.quantite;
+  }, 0);
+
+  // Mettre à jour l'affichage du compteur
+  const compteur = document.getElementById('compteur-panier');
+  if (compteur) {
+    if (total > 0) {
+      compteur.textContent = total;
+    } else {
+      compteur.textContent = '';
+    }
+  }
+}
+
+// ================================================================
+// Initialisation au chargement de la page
+// ================================================================
+document.addEventListener('DOMContentLoaded', mettreAJourCompteurPanier);
