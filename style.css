@@ -1,22 +1,30 @@
 /* =============================================
    LA CAVE — Feuille de style principale
-   Auteur : [Ton Nom] (Chef d'équipe)
+   Auteur : Membre 1 (Chef d'équipe)
    ============================================= */
 
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Lato:wght@300;400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap');
 
-/* --- Variables globales --- */
+/* =============================================
+   VARIABLES GLOBALES
+   ============================================= */
 :root {
-  --couleur-principale : #722F37;  /* Bordeaux */
-  --couleur-or         : #C9A84C;  /* Or */
-  --couleur-creme      : #FAF3E0;  /* Crème */
-  --couleur-sombre     : #1a1a1a;  /* Noir doux */
+  --couleur-principale : #722F37;
+  --couleur-or         : #C9A84C;
+  --couleur-creme      : #FAF3E0;
+  --couleur-sombre     : #1a1a1a;
   --couleur-texte      : #333333;
+  --couleur-gris       : #f5f5f0;
   --police-titre       : 'Cormorant Garamond', serif;
   --police-corps       : 'Lato', sans-serif;
+  --ombre              : 0 4px 20px rgba(0,0,0,0.1);
+  --ombre-forte        : 0 8px 40px rgba(0,0,0,0.2);
+  --transition         : all 0.3s ease;
 }
 
-/* --- Réinitialisation --- */
+/* =============================================
+   RÉINITIALISATION
+   ============================================= */
 * {
   margin: 0;
   padding: 0;
@@ -26,7 +34,8 @@
 body {
   font-family: var(--police-corps);
   color: var(--couleur-texte);
-  background-color: var(--couleur-creme);
+  background-color: #fff;
+  overflow-x: hidden;
 }
 
 a {
@@ -34,39 +43,63 @@ a {
   color: inherit;
 }
 
+img {
+  max-width: 100%;
+  display: block;
+}
+
 /* =============================================
    BARRE DE NAVIGATION
    ============================================= */
 nav {
   background-color: var(--couleur-sombre);
-  padding: 1rem 2rem;
+  padding: 1.2rem 4rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
   position: sticky;
   top: 0;
-  z-index: 100;
+  z-index: 1000;
 }
 
-nav .logo {
+nav .logo-nav {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+}
+
+nav .logo-img {
+  height: 55px;
+  width: auto;
+  transition: opacity 0.3s;
+}
+
+nav .logo-nav:hover .logo-img {
+  opacity: 0.85;
+}
+
+nav .logo-texte {
   font-family: var(--police-titre);
   font-size: 1.8rem;
   color: var(--couleur-or);
-  letter-spacing: 2px;
+  letter-spacing: 6px;
+  font-weight: 600;
 }
 
 nav ul {
   list-style: none;
   display: flex;
-  gap: 2rem;
+  gap: 3rem;
 }
 
 nav ul li a {
-  color: var(--couleur-creme);
-  font-size: 0.95rem;
-  letter-spacing: 1px;
+  color: #aaa;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
   text-transform: uppercase;
-  transition: color 0.3s;
+  transition: var(--transition);
+  font-weight: 400;
 }
 
 nav ul li a:hover,
@@ -80,13 +113,46 @@ nav ul li a.actif {
 footer {
   background-color: var(--couleur-sombre);
   color: var(--couleur-creme);
-  text-align: center;
-  padding: 2rem;
-  margin-top: 4rem;
-  font-size: 0.85rem;
+  margin-top: 0;
 }
 
-footer a {
+.footer-contenu {
+  padding: 2rem 4rem 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  border-bottom: 1px solid #333;
+}
+
+.footer-liens {
+  display: flex;
+  gap: 2.5rem;
+  margin-top: 0.5rem;
+}
+
+.footer-liens a {
+  color: #aaa;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  transition: var(--transition);
+}
+
+.footer-liens a:hover {
+  color: var(--couleur-or);
+}
+
+.footer-bas {
+  padding: 1.5rem 4rem;
+  text-align: center;
+  font-size: 0.8rem;
+  color: #555;
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer-bas a {
   color: var(--couleur-or);
 }
 
@@ -94,15 +160,17 @@ footer a {
    BOUTONS
    ============================================= */
 .btn-principal {
+  display: inline-block;
   background-color: var(--couleur-principale);
   color: var(--couleur-creme);
-  padding: 0.75rem 2rem;
+  padding: 0.9rem 2.5rem;
   border: none;
   font-family: var(--police-corps);
-  font-size: 1rem;
-  letter-spacing: 1px;
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
   cursor: pointer;
-  transition: background-color 0.3s;
+  transition: var(--transition);
 }
 
 .btn-principal:hover {
@@ -110,20 +178,787 @@ footer a {
   color: var(--couleur-sombre);
 }
 
+.btn-contour {
+  display: inline-block;
+  background-color: transparent;
+  color: var(--couleur-principale);
+  padding: 0.9rem 2.5rem;
+  border: 1px solid var(--couleur-principale);
+  font-family: var(--police-corps);
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: var(--transition);
+  margin-top: 1.5rem;
+}
+
+.btn-contour:hover {
+  background-color: var(--couleur-principale);
+  color: var(--couleur-creme);
+}
+
+.btn-carte {
+  display: inline-block;
+  background-color: transparent;
+  color: var(--couleur-principale);
+  font-size: 0.78rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--couleur-principale);
+  padding-bottom: 2px;
+  transition: var(--transition);
+}
+
+.btn-carte:hover {
+  color: var(--couleur-or);
+  border-color: var(--couleur-or);
+}
+
 /* =============================================
-   TITRE DE SECTION
+   LABELS ET TITRES DE SECTION
    ============================================= */
+.label-section {
+  font-size: 0.75rem;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  color: var(--couleur-or);
+  text-align: center;
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
 .titre-section {
   font-family: var(--police-titre);
-  font-size: 2.2rem;
-  color: var(--couleur-principale);
+  font-size: 2.8rem;
+  color: var(--couleur-sombre);
   text-align: center;
   margin-bottom: 0.5rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.titre-section-gauche {
+  font-family: var(--police-titre);
+  font-size: 2.8rem;
+  color: var(--couleur-sombre);
+  text-align: left;
+  margin-bottom: 1.5rem;
+  font-weight: 600;
+  line-height: 1.2;
 }
 
 .sous-titre-section {
   text-align: center;
-  color: #777;
+  color: #999;
+  margin-bottom: 3rem;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
+
+/* =============================================
+   SECTION HÉRO
+   ============================================= */
+/* Logo dans le héro */
+.hero-logo {
+  height: 180px;
+  width: auto;
+  margin: 0 auto 1.5rem;
+  filter: drop-shadow(0 0 30px rgba(201, 168, 76, 0.4));
+}
+
+/* Logo dans le footer */
+.footer-logo-img {
+  height: 130px;
+  width: auto;
+  margin: 0 auto;
+  opacity: 0.9;
+}
+
+.hero {
+  position: relative;
+  height: 100vh;
+  min-height: 600px;
+  background-image: url('images/vin-ledge-1.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(10, 5, 5, 0.65) 0%,
+    rgba(10, 5, 5, 0.5) 60%,
+    rgba(10, 5, 5, 0.75) 100%
+  );
+}
+
+.hero-contenu {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #fff;
+  max-width: 750px;
+  padding: 0 2rem;
+}
+
+.hero-label {
+  font-size: 0.75rem;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--couleur-or);
+  margin-bottom: 1.5rem;
+}
+
+.hero-contenu h1 {
+  font-family: var(--police-titre);
+  font-size: 5rem;
+  font-weight: 600;
+  line-height: 1.1;
+  margin-bottom: 1.5rem;
+  color: #fff;
+}
+
+.hero-sous-titre {
+  font-size: 1rem;
+  color: rgba(255,255,255,0.75);
   margin-bottom: 2.5rem;
+  line-height: 1.7;
+  font-weight: 300;
+  letter-spacing: 0.5px;
+}
+
+.hero-scroll {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 2;
+  color: rgba(255,255,255,0.4);
+  font-size: 1rem;
+  animation: rebondir 2s infinite;
+}
+
+@keyframes rebondir {
+  0%, 100% { transform: translateX(-50%) translateY(0); }
+  50%       { transform: translateX(-50%) translateY(8px); }
+}
+
+/* =============================================
+   SECTION VINS EN VEDETTE
+   ============================================= */
+.vins-vedette {
+  padding: 6rem 4rem;
+  background-color: var(--couleur-creme);
+}
+
+.grille-vins {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.carte-vin {
+  background-color: #fff;
+  box-shadow: var(--ombre);
+  transition: var(--transition);
+  overflow: hidden;
+}
+
+.carte-vin:hover {
+  box-shadow: var(--ombre-forte);
+  transform: translateY(-6px);
+}
+
+.carte-vin-image {
+  width: 100%;
+  height: 360px;
+  overflow: hidden;
+}
+
+.carte-vin-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.carte-vin:hover .carte-vin-image img {
+  transform: scale(1.05);
+}
+
+.carte-vin-corps {
+  padding: 1.5rem;
+  background-color: var(--couleur-principale);
+}
+
+.carte-categorie {
+  font-size: 0.7rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 0.25rem 0.75rem;
+  display: inline-block;
+  margin-bottom: 0.75rem;
+  font-weight: 700;
+}
+
+.carte-categorie.rouge {
+  background-color: rgba(255,255,255,0.15);
+  color: #fff;
+}
+
+.carte-categorie.blanc {
+  background-color: rgba(255,255,255,0.15);
+  color: #fff;
+}
+
+.carte-categorie.champagne {
+  background-color: rgba(255,255,255,0.15);
+  color: var(--couleur-or);
+}
+
+.carte-vin-corps h3 {
+  font-family: var(--police-titre);
+  font-size: 1.4rem;
+  color: #fff;
+  margin-bottom: 0.25rem;
+}
+
+.carte-vin-corps > p {
+  color: rgba(255,255,255,0.65);
+  font-size: 0.85rem;
+  margin-bottom: 1rem;
+}
+
+.carte-bas {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid rgba(255,255,255,0.2);
+}
+
+.prix {
+  font-family: var(--police-titre);
+  font-size: 1.3rem;
+  color: var(--couleur-or);
+  font-weight: 600;
+}
+
+.btn-carte {
+  display: inline-block;
+  background-color: var(--couleur-or);
+  color: var(--couleur-sombre);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  cursor: pointer;
+  transition: var(--transition);
+  font-family: var(--police-corps);
+}
+
+.btn-carte:hover {
+  background-color: #fff;
+  color: var(--couleur-principale);
+}
+
+.voir-tout {
+  text-align: center;
+  margin-top: 3.5rem;
+}
+
+/* =============================================
+   SECTION HISTOIRE (split image + texte)
+   ============================================= */
+.section-histoire {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  min-height: 600px;
+}
+
+.histoire-image {
+  overflow: hidden;
+}
+
+.histoire-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.8s ease;
+}
+
+.histoire-image:hover img {
+  transform: scale(1.03);
+}
+
+.histoire-texte {
+  background-color: var(--couleur-sombre);
+  padding: 5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.histoire-texte .label-section {
+  text-align: left;
+}
+
+.histoire-texte p {
+  color: #aaa;
+  line-height: 1.9;
   font-size: 0.95rem;
+  margin-bottom: 1rem;
+}
+
+/* =============================================
+   SECTION CHIFFRES
+   ============================================= */
+.section-chiffres {
+  background-color: var(--couleur-principale);
+  padding: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0;
+}
+
+.chiffre-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0 4rem;
+}
+
+.chiffre {
+  font-family: var(--police-titre);
+  font-size: 3rem;
+  color: var(--couleur-or);
+  font-weight: 700;
+}
+
+.chiffre-label {
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  text-align: center;
+}
+
+.chiffre-separateur {
+  width: 1px;
+  height: 60px;
+  background-color: rgba(255,255,255,0.2);
+}
+
+/* =============================================
+   PAGE BOUTIQUE — shop.html (Membre 3)
+   ============================================= */
+/* Hero boutique */
+.boutique-hero {
+  position: relative;
+  height: 55vh;
+  min-height: 380px;
+  background-image: url('images/wine-cellar-1-crop.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.boutique-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(10,5,5,0.6) 0%,
+    rgba(10,5,5,0.45) 60%,
+    rgba(10,5,5,0.7) 100%
+  );
+}
+
+.boutique-hero-contenu {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #fff;
+}
+
+.boutique-hero-titre {
+  font-family: var(--police-titre);
+  font-size: 3.5rem;
+  font-weight: 600;
+  color: #fff;
+  margin: 0.5rem 0;
+}
+
+.boutique-hero-sous-titre {
+  color: rgba(255,255,255,0.7);
+  font-size: 0.95rem;
+  letter-spacing: 1px;
+  font-weight: 300;
+  margin-top: 0.75rem;
+}
+
+.boutique {
+  padding: 5rem 4rem;
+  background-color: var(--couleur-creme);
+  min-height: 80vh;
+}
+
+.filtres {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 3rem;
+  flex-wrap: wrap;
+}
+
+.btn-filtre {
+  background-color: transparent;
+  border: 1px solid #ccc;
+  color: var(--couleur-texte);
+  padding: 0.6rem 1.8rem;
+  font-family: var(--police-corps);
+  font-size: 0.78rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: var(--transition);
+}
+
+.btn-filtre:hover,
+.btn-filtre.actif-filtre {
+  background-color: var(--couleur-principale);
+  color: #fff;
+  border-color: var(--couleur-principale);
+}
+
+/* =============================================
+   PAGE À PROPOS — a-propos.html (Membre 4)
+   ============================================= */
+/* =============================================
+   PAGE À PROPOS — a-propos.html (Membre 4)
+   ============================================= */
+
+/* Hero bannière avec winery-1.jpg */
+.apropos-hero {
+  position: relative;
+  height: 55vh;
+  min-height: 400px;
+  background-image: url('images/winery-1.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.apropos-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(10,5,5,0.6) 0%,
+    rgba(10,5,5,0.45) 60%,
+    rgba(10,5,5,0.7) 100%
+  );
+}
+
+.apropos-hero-contenu {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: #fff;
+}
+
+.apropos-hero-titre {
+  font-family: var(--police-titre);
+  font-size: 3.5rem;
+  font-weight: 600;
+  color: #fff;
+  margin: 0.5rem 0;
+}
+
+.apropos-hero-sous-titre {
+  color: rgba(255,255,255,0.7);
+  font-size: 0.95rem;
+  letter-spacing: 1px;
+  font-weight: 300;
+  margin-top: 0.75rem;
+}
+
+/* Section Histoire */
+.histoire {
+  padding: 6rem 4rem;
+  background-color: var(--couleur-creme);
+}
+
+.histoire-contenu {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 5rem;
+  align-items: center;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.histoire-image-wrapper {
+  height: 520px;
+  overflow: hidden;
+  box-shadow: var(--ombre-forte);
+}
+
+.image-histoire {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: transform 0.8s ease;
+}
+
+.histoire-image-wrapper:hover .image-histoire {
+  transform: scale(1.04);
+}
+
+.texte-histoire p {
+  color: #666;
+  line-height: 1.9;
+  margin-bottom: 1.2rem;
+  font-size: 0.95rem;
+}
+
+/* Section Équipe */
+.equipe {
+  padding: 6rem 4rem;
+  background-color: #fff;
+}
+
+/* Grille 5 membres : 3 en haut, 2 centrés en bas */
+.grille-equipe-5 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.grille-equipe-5 .carte-membre:nth-child(4) {
+  grid-column: 1;
+  margin-left: 50%;
+}
+
+.grille-equipe-5 .carte-membre:nth-child(5) {
+  grid-column: 2;
+}
+
+/* Carte membre */
+.carte-membre {
+  background-color: var(--couleur-creme);
+  padding: 2rem;
+  text-align: center;
+  box-shadow: var(--ombre);
+  transition: var(--transition);
+}
+
+.carte-membre:hover {
+  transform: translateY(-5px);
+  box-shadow: var(--ombre-forte);
+}
+
+/* Wrapper commun photo/placeholder */
+.membre-photo-wrapper {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  margin: 0 auto 1rem;
+  border: 3px solid var(--couleur-or);
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Photo réelle */
+.membre-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+/* Placeholder initiales */
+.membre-placeholder {
+  background-color: var(--couleur-sombre);
+}
+
+.membre-initiales {
+  font-family: var(--police-titre);
+  font-size: 1.8rem;
+  color: var(--couleur-or);
+  font-weight: 600;
+}
+
+.carte-membre h3 {
+  font-family: var(--police-titre);
+  font-size: 1.3rem;
+  color: var(--couleur-sombre);
+  margin-bottom: 0.25rem;
+}
+
+.carte-membre p {
+  color: #999;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+
+.valeurs {
+  padding: 6rem 4rem;
+  background-color: #fff;
+}
+
+.grille-valeurs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.carte-valeur {
+  text-align: center;
+  padding: 2.5rem 2rem;
+  border: 1px solid #eee;
+  transition: var(--transition);
+}
+
+.carte-valeur:hover {
+  border-color: var(--couleur-or);
+  box-shadow: var(--ombre);
+}
+
+.carte-valeur i {
+  font-size: 2rem;
+  color: var(--couleur-or);
+  margin-bottom: 1rem;
+}
+
+.carte-valeur h3 {
+  font-family: var(--police-titre);
+  font-size: 1.4rem;
+  color: var(--couleur-sombre);
+  margin-bottom: 0.75rem;
+}
+
+.carte-valeur p {
+  color: #888;
+  font-size: 0.9rem;
+  line-height: 1.7;
+}
+
+/* =============================================
+   PAGE CONTACT — contact.html (Membre 5)
+   ============================================= */
+.contact {
+  padding: 6rem 4rem;
+  background-color: var(--couleur-creme);
+  min-height: 80vh;
+}
+
+.contact-contenu {
+  display: grid;
+  grid-template-columns: 1.5fr 1fr;
+  gap: 4rem;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.formulaire-contact {
+  background-color: #fff;
+  padding: 3rem;
+  box-shadow: var(--ombre);
+}
+
+.formulaire-contact h3 {
+  font-family: var(--police-titre);
+  font-size: 1.6rem;
+  color: var(--couleur-sombre);
+  margin-bottom: 2rem;
+}
+
+.champ {
+  margin-bottom: 1.5rem;
+}
+
+.champ label {
+  display: block;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #888;
+  margin-bottom: 0.5rem;
+}
+
+.champ input,
+.champ textarea {
+  width: 100%;
+  padding: 0.85rem 1rem;
+  border: 1px solid #ddd;
+  font-family: var(--police-corps);
+  font-size: 0.95rem;
+  color: var(--couleur-texte);
+  background-color: #fafafa;
+  transition: var(--transition);
+  outline: none;
+  resize: vertical;
+}
+
+.champ input:focus,
+.champ textarea:focus {
+  border-color: var(--couleur-principale);
+  background-color: #fff;
+}
+
+.infos-contact {
+  padding: 2rem 0;
+}
+
+.infos-contact h3 {
+  font-family: var(--police-titre);
+  font-size: 1.6rem;
+  color: var(--couleur-sombre);
+  margin-bottom: 2rem;
+}
+
+.info-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.info-item i {
+  color: var(--couleur-or);
+  font-size: 1.1rem;
+  margin-top: 3px;
+  min-width: 20px;
 }

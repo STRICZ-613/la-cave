@@ -11,7 +11,10 @@
 
   <!-- ========== NAVIGATION ========== -->
   <nav>
-    <div class="logo">🍷 La Cave</div>
+    <a href="index.html" class="logo-nav">
+      <img src="images/logo-2.png" alt="La Cave" class="logo-img" />
+      <span class="logo-texte">LA CAVE</span>
+    </a>
     <ul>
       <li><a href="index.html" class="actif">Accueil</a></li>
       <li><a href="shop.html">Boutique</a></li>
@@ -23,45 +26,114 @@
   <!-- ========== CONTENU PRINCIPAL ========== -->
   <main>
 
-    <!-- Section Héro -->
+    <!-- ===== SECTION HÉRO ===== -->
     <section class="hero">
+      <div class="hero-overlay"></div>
       <div class="hero-contenu">
+        <img src="images/logo-2.png" alt="La Cave" class="hero-logo" />
         <h1>L'Art du Vin,<br/>À Votre Portée</h1>
-        <p>Découvrez notre sélection de vins d'exception soigneusement choisis pour les vrais amateurs.</p>
-        <a href="shop.html" class="btn-principal">Voir la Boutique</a>
+        <p class="hero-sous-titre">Découvrez notre sélection de vins d'exception soigneusement choisis pour les vrais amateurs.</p>
+        <a href="shop.html" class="btn-principal">Voir la Boutique &nbsp;<i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+      <div class="hero-scroll">
+        <i class="fa-solid fa-chevron-down"></i>
       </div>
     </section>
 
-    <!-- Section Vins en Vedette -->
+    <!-- ===== SECTION VINS EN VEDETTE ===== -->
     <section class="vins-vedette">
+      <p class="label-section">Sélection du Mois</p>
       <h2 class="titre-section">Nos Vins en Vedette</h2>
       <p class="sous-titre-section">Une sélection raffinée pour toutes les occasions</p>
+
       <div class="grille-vins">
 
         <div class="carte-vin">
-          <img src="images/vin1.jpg" alt="Vin rouge" />
-          <h3>Château Margaux 2019</h3>
-          <p>Vin rouge — Bordeaux</p>
-          <span class="prix">75 000 FCFA</span>
-          <a href="shop.html" class="btn-principal">Voir Plus</a>
+          <div class="carte-vin-image">
+            <img src="images/vin-rouge-2.jpg" alt="Vin rouge" />
+          </div>
+          <div class="carte-vin-corps">
+            <span class="carte-categorie rouge">Rouge</span>
+            <h3>Château Margaux 2019</h3>
+            <p>Vin rouge — Bordeaux</p>
+            <div class="carte-bas">
+              <span class="prix">75 000 FCFA</span>
+              <a href="shop.html" class="btn-carte">Voir Plus</a>
+            </div>
+          </div>
         </div>
 
         <div class="carte-vin">
-          <img src="images/vin2.jpg" alt="Vin blanc" />
-          <h3>Pouilly-Fumé 2021</h3>
-          <p>Vin blanc — Loire</p>
-          <span class="prix">45 000 FCFA</span>
-          <a href="shop.html" class="btn-principal">Voir Plus</a>
+          <div class="carte-vin-image">
+            <img src="images/vin-blanc-1.jpg" alt="Vin blanc" />
+          </div>
+          <div class="carte-vin-corps">
+            <span class="carte-categorie blanc">Blanc</span>
+            <h3>Pouilly-Fumé 2021</h3>
+            <p>Vin blanc — Loire</p>
+            <div class="carte-bas">
+              <span class="prix">45 000 FCFA</span>
+              <a href="shop.html" class="btn-carte">Voir Plus</a>
+            </div>
+          </div>
         </div>
 
         <div class="carte-vin">
-          <img src="images/vin3.jpg" alt="Champagne" />
-          <h3>Moët & Chandon</h3>
-          <p>Champagne — Épernay</p>
-          <span class="prix">90 000 FCFA</span>
-          <a href="shop.html" class="btn-principal">Voir Plus</a>
+          <div class="carte-vin-image">
+            <img src="images/champagne-2.jpg" alt="Champagne" />
+          </div>
+          <div class="carte-vin-corps">
+            <span class="carte-categorie champagne">Champagne</span>
+            <h3>Moët &amp; Chandon</h3>
+            <p>Champagne — Épernay</p>
+            <div class="carte-bas">
+              <span class="prix">90 000 FCFA</span>
+              <a href="shop.html" class="btn-carte">Voir Plus</a>
+            </div>
+          </div>
         </div>
 
+      </div>
+
+      <div class="voir-tout">
+        <a href="shop.html" class="btn-principal">Voir Toute la Boutique &nbsp;<i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    </section>
+
+    <!-- ===== SECTION HISTOIRE (image verticale + texte) ===== -->
+    <section class="section-histoire">
+      <div class="histoire-image">
+        <img src="images/vin-ledge-2.jpg" alt="Notre cave à vins" />
+      </div>
+      <div class="histoire-texte">
+        <p class="label-section">Notre Histoire</p>
+        <h2 class="titre-section-gauche">Une Passion<br/>Transmise</h2>
+        <p>Fondée en 2010, La Cave est née d'un amour profond pour les grands crus du monde entier. Nous sélectionnons chaque bouteille avec soin, directement auprès des meilleurs vignerons de France, d'Italie et d'Espagne.</p>
+        <p>Notre mission est simple : vous offrir une expérience gustative unique, à un prix juste.</p>
+        <a href="a-propos.html" class="btn-contour">Découvrir Notre Histoire &nbsp;<i class="fa-solid fa-arrow-right"></i></a>
+      </div>
+    </section>
+
+    <!-- ===== SECTION CHIFFRES ===== -->
+    <section class="section-chiffres">
+      <div class="chiffre-item">
+        <span class="chiffre">500+</span>
+        <span class="chiffre-label">Références de Vins</span>
+      </div>
+      <div class="chiffre-separateur"></div>
+      <div class="chiffre-item">
+        <span class="chiffre">15+</span>
+        <span class="chiffre-label">Années d'Expérience</span>
+      </div>
+      <div class="chiffre-separateur"></div>
+      <div class="chiffre-item">
+        <span class="chiffre">12</span>
+        <span class="chiffre-label">Pays Partenaires</span>
+      </div>
+      <div class="chiffre-separateur"></div>
+      <div class="chiffre-item">
+        <span class="chiffre">2000+</span>
+        <span class="chiffre-label">Clients Satisfaits</span>
       </div>
     </section>
 
@@ -69,8 +141,19 @@
 
   <!-- ========== PIED DE PAGE ========== -->
   <footer>
-    <p>&copy; 2025 La Cave — Tous droits réservés</p>
-    <p>Fait avec ❤️ par <a href="a-propos.html">notre équipe</a></p>
+    <div class="footer-contenu">
+      <img src="images/logo-2.png" alt="La Cave" class="footer-logo-img" />
+      <div class="footer-liens">
+        <a href="index.html">Accueil</a>
+        <a href="shop.html">Boutique</a>
+        <a href="a-propos.html">À Propos</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bas">
+      <p>&copy; 2025 La Cave — Tous droits réservés</p>
+      <p>Fait avec ❤️ par <a href="a-propos.html">notre équipe</a></p>
+    </div>
   </footer>
 
   <script src="script.js"></script>

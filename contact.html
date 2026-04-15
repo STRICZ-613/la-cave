@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact - La Cave</title>
+    <!-- Polices Google Fonts (Importées par le Membre 1) -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <!-- Font Awesome pour les icônes (Déjà lié dans le head ) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Fichier CSS principal (Géré par le Membre 1 ) -->
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- BARRE DE NAVIGATION (Copie conforme de index.html) -->
+    <nav>
+        <div class="logo">🍷 La Cave</div>
+        <ul>
+            <li><a href="index.html">Accueil</a></li>
+            <li><a href="shop.html">Boutique</a></li>
+            <li><a href="a-propos.html">À Propos</a></li>
+            <li><a href="contact.html" class="actif">Contact</a></li>
+        </ul>
+    </nav>
+
+    <main>
+        <!-- SECTION CONTACT -->
+        <section class="contact">
+            <h1 class="titre-section">Contactez-Nous</h1>
+            <p class="sous-titre-section">Nous sommes à votre écoute</p>
+
+            <div class="contact-contenu">
+                
+                <!-- COLONNE 1 : Formulaire de contact -->
+                <div class="formulaire-contact">
+                    <h3>Envoyez-nous un message</h3>
+                    
+                    <div class="champ">
+                        <label for="nom">Nom complet</label>
+                        <input type="text" id="nom" placeholder="Votre nom complet">
+                    </div>
+
+                    <div class="champ">
+                        <label for="email">Adresse email</label>
+                        <input type="email" id="email" placeholder="votre@email.com">
+                    </div>
+
+                    <div class="champ">
+                        <label for="sujet">Sujet</label>
+                        <input type="text" id="sujet" placeholder="Sujet de votre message">
+                    </div>
+
+                    <div class="champ">
+                        <label for="message">Message</label>
+                        <textarea id="message" rows="5" placeholder="Comment pouvons-nous vous aider ?"></textarea>
+                    </div>
+
+                    <!-- Appel de la fonction envoyerMessage() du Membre 2 -->
+                    <button class="btn-principal" onclick="envoyerMessage()">
+                        Envoyer <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </div>
+
+                <!-- COLONNE 2 : Informations de contact -->
+                <div class="infos-contact">
+                    <h3>Nos coordonnées</h3>
+                    
+                    <div class="info-item">
+                        <i class="fa-solid fa-location-dot"></i>
+                        <p>123 Rue des Vignes, Yaoundé, Cameroun</p>
+                    </div>
+
+                    <div class="info-item">
+                        <i class="fa-solid fa-phone"></i>
+                        <p>+237 6XX XXX XXX</p>
+                    </div>
+
+                    <div class="info-item">
+                        <i class="fa-solid fa-envelope"></i>
+                        <p>contact@lacave.cm</p>
+                    </div>
+
+                    <div class="info-item">
+                        <i class="fa-solid fa-clock"></i>
+                        <p>Lun – Sam : 9h00 – 19h00</p>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </main>
+
+    <!-- PIED DE PAGE (Copie conforme de index.html) -->
+    <footer>
+        <p>&copy; 2025 La Cave — Tous droits réservés</p>
+        <p>Fait avec ❤️ par <a href="a-propos.html">notre équipe</a></p>
+    </footer>
+
+    <!-- LIEN VERS LE SCRIPT (Indispensable pour le formulaire) -->
+    <script src="script.js"></script>
+</body>
+</html>
