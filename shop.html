@@ -9,6 +9,7 @@
 </head>
 <body>
 
+  <!-- ========== NAVIGATION ========== -->
   <nav>
     <a href="index.html" class="logo-nav">
       <img src="images/logo-2.png" alt="La Cave" class="logo-img" />
@@ -19,11 +20,19 @@
       <li><a href="shop.html" class="actif">Boutique</a></li>
       <li><a href="a-propos.html">À Propos</a></li>
       <li><a href="contact.html">Contact</a></li>
+      <li>
+        <a href="panier.html">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span id="compteur-panier"></span>
+        </a>
+      </li>
     </ul>
   </nav>
 
+  <!-- ========== CONTENU PRINCIPAL ========== -->
   <main>
 
+    <!-- ===== HERO BOUTIQUE ===== -->
     <section class="boutique-hero">
       <div class="boutique-hero-overlay"></div>
       <div class="boutique-hero-contenu">
@@ -33,11 +42,13 @@
       </div>
     </section>
 
+    <!-- ===== BOUTIQUE ===== -->
     <section class="boutique">
       <p class="label-section">Notre Sélection</p>
       <h2 class="titre-section">Notre Boutique</h2>
       <p class="sous-titre-section">Tous nos vins disponibles à la commande</p>
 
+      <!-- Filtres -->
       <div class="filtres">
         <button class="btn-filtre actif-filtre" onclick="filtrer('tous')">Tous</button>
         <button class="btn-filtre" onclick="filtrer('rouge')">Rouges</button>
@@ -45,15 +56,16 @@
         <button class="btn-filtre" onclick="filtrer('champagne')">Champagne</button>
       </div>
 
+      <!-- Grille de vins -->
       <div class="grille-vins" id="grille-boutique">
 
-        <div class="carte-vin" 
-             data-categorie="rouge" 
-             data-nom="Château Prestige" 
-             data-region="Bordeaux" 
-             data-type="Vin rouge" 
-             data-prix="45 000 FCFA" 
-             data-image="images/vin-rouge-1.jpg" 
+        <div class="carte-vin"
+             data-categorie="rouge"
+             data-nom="Château Prestige"
+             data-region="Bordeaux"
+             data-type="Vin rouge"
+             data-prix="45 000 FCFA"
+             data-image="images/vin-rouge-1.jpg"
              data-description="Un vin rouge élégant aux arômes de fruits noirs, de cassis et de vanille. Élevé en fût de chêne, il offre une structure tannique noble."
              onclick="ouvrirModal(this)">
           <div class="carte-vin-image">
@@ -65,18 +77,18 @@
             <p>Vin rouge — Bordeaux</p>
             <div class="carte-bas">
               <span class="prix">45 000 FCFA</span>
-              <button class="btn-carte" onclick="event.stopPropagation(); ajouterPanier('Château Prestige')">Ajouter</button>
+              <button class="btn-carte" onclick="event.stopPropagation(); ajouterPanier('Château Prestige', '45 000 FCFA', 'images/vin-rouge-1.jpg')">Ajouter</button>
             </div>
           </div>
         </div>
 
-        <div class="carte-vin" 
-             data-categorie="blanc" 
-             data-nom="Éclat de Loire" 
-             data-region="Loire" 
-             data-type="Vin blanc" 
-             data-prix="35 000 FCFA" 
-             data-image="images/vin-blanc-1.jpg" 
+        <div class="carte-vin"
+             data-categorie="blanc"
+             data-nom="Éclat de Loire"
+             data-region="Loire"
+             data-type="Vin blanc"
+             data-prix="35 000 FCFA"
+             data-image="images/vin-blanc-1.jpg"
              data-description="Une robe cristalline pour un vin aux notes d'agrumes et de fleurs blanches. Une fraîcheur remarquable typique de la vallée de la Loire."
              onclick="ouvrirModal(this)">
           <div class="carte-vin-image">
@@ -88,18 +100,18 @@
             <p>Vin blanc — Loire</p>
             <div class="carte-bas">
               <span class="prix">35 000 FCFA</span>
-              <button class="btn-carte" onclick="event.stopPropagation(); ajouterPanier('Éclat de Loire')">Ajouter</button>
+              <button class="btn-carte" onclick="event.stopPropagation(); ajouterPanier('Éclat de Loire', '35 000 FCFA', 'images/vin-blanc-1.jpg')">Ajouter</button>
             </div>
           </div>
         </div>
 
-        <div class="carte-vin" 
-             data-categorie="champagne" 
-             data-nom="Bulles d'Or" 
-             data-region="Reims" 
-             data-type="Champagne" 
-             data-prix="85 000 FCFA" 
-             data-image="images/champagne-1.jpg" 
+        <div class="carte-vin"
+             data-categorie="champagne"
+             data-nom="Bulles d'Or"
+             data-region="Reims"
+             data-type="Champagne"
+             data-prix="85 000 FCFA"
+             data-image="images/champagne-1.jpg"
              data-description="Le prestige de Reims dans une bouteille. Des bulles fines, un nez brioché et une finale d'une finesse incomparable."
              onclick="ouvrirModal(this)">
           <div class="carte-vin-image">
@@ -111,18 +123,18 @@
             <p>Champagne — Reims</p>
             <div class="carte-bas">
               <span class="prix">85 000 FCFA</span>
-              <button class="btn-carte" onclick="event.stopPropagation(); ajouterPanier('Bulles d\'Or')">Ajouter</button>
+              <button class="btn-carte" onclick="event.stopPropagation(); ajouterPanier('Bulles d\'Or', '85 000 FCFA', 'images/champagne-1.jpg')">Ajouter</button>
             </div>
           </div>
         </div>
 
-        <div class="carte-vin" 
-             data-categorie="blanc" 
-             data-nom="Perle d'Alsace" 
-             data-region="Alsace" 
-             data-type="Vin blanc" 
-             data-prix="28 000 FCFA" 
-             data-image="images/vin-blanc-2.jpg" 
+        <div class="carte-vin"
+             data-categorie="blanc"
+             data-nom="Perle d'Alsace"
+             data-region="Alsace"
+             data-type="Vin blanc"
+             data-prix="28 000 FCFA"
+             data-image="images/vin-blanc-2.jpg"
              data-description="Un blanc aromatique et minéral. Idéal pour accompagner vos moments de gastronomie avec ses notes de fruits à chair blanche."
              onclick="ouvrirModal(this)">
           <div class="carte-vin-image">
@@ -134,18 +146,18 @@
             <p>Vin blanc — Alsace</p>
             <div class="carte-bas">
               <span class="prix">28 000 FCFA</span>
-              <button class="btn-carte" onclick="event.stopPropagation(); ajouterPanier('Perle d\'Alsace')">Ajouter</button>
+              <button class="btn-carte" onclick="event.stopPropagation(); ajouterPanier('Perle d\'Alsace', '28 000 FCFA', 'images/vin-blanc-2.jpg')">Ajouter</button>
             </div>
           </div>
         </div>
 
-        <div class="carte-vin" 
-             data-categorie="rouge" 
-             data-nom="Rubis Impérial" 
-             data-region="Bourgogne" 
-             data-type="Vin rouge" 
-             data-prix="60 000 FCFA" 
-             data-image="images/vin-rouge-2.jpg" 
+        <div class="carte-vin"
+             data-categorie="rouge"
+             data-nom="Rubis Impérial"
+             data-region="Bourgogne"
+             data-type="Vin rouge"
+             data-prix="60 000 FCFA"
+             data-image="images/vin-rouge-2.jpg"
              data-description="Un Pinot Noir d'exception révélant des arômes de cerise griotte et de sous-bois. La délicatesse et la complexité bourguignonne."
              onclick="ouvrirModal(this)">
           <div class="carte-vin-image">
@@ -157,18 +169,18 @@
             <p>Vin rouge — Bourgogne</p>
             <div class="carte-bas">
               <span class="prix">60 000 FCFA</span>
-              <button class="btn-carte" onclick="event.stopPropagation(); ajouterPanier('Rubis Impérial')">Ajouter</button>
+              <button class="btn-carte" onclick="event.stopPropagation(); ajouterPanier('Rubis Impérial', '60 000 FCFA', 'images/vin-rouge-2.jpg')">Ajouter</button>
             </div>
           </div>
         </div>
 
-        <div class="carte-vin" 
-             data-categorie="blanc" 
-             data-nom="Pouilly-Fumé Réserve" 
-             data-region="Loire" 
-             data-type="Vin blanc" 
-             data-prix="42 000 FCFA" 
-             data-image="images/vin-blanc-3.jpg" 
+        <div class="carte-vin"
+             data-categorie="blanc"
+             data-nom="Pouilly-Fumé Réserve"
+             data-region="Loire"
+             data-type="Vin blanc"
+             data-prix="42 000 FCFA"
+             data-image="images/vin-blanc-3.jpg"
              data-description="Ce Sauvignon Blanc se distingue par ses notes de pierre à fusil et sa minéralité fumée unique au monde."
              onclick="ouvrirModal(this)">
           <div class="carte-vin-image">
@@ -180,18 +192,18 @@
             <p>Vin blanc — Centre-Loire</p>
             <div class="carte-bas">
               <span class="prix">42 000 FCFA</span>
-              <button class="btn-carte" onclick="event.stopPropagation(); ajouterPanier('Pouilly-Fumé Réserve')">Ajouter</button>
+              <button class="btn-carte" onclick="event.stopPropagation(); ajouterPanier('Pouilly-Fumé Réserve', '42 000 FCFA', 'images/vin-blanc-3.jpg')">Ajouter</button>
             </div>
           </div>
         </div>
 
-        <div class="carte-vin" 
-             data-categorie="champagne" 
-             data-nom="Cuvée Royale" 
-             data-region="Épernay" 
-             data-type="Champagne" 
-             data-prix="120 000 FCFA" 
-             data-image="images/champagne-2.jpg" 
+        <div class="carte-vin"
+             data-categorie="champagne"
+             data-nom="Cuvée Royale"
+             data-region="Épernay"
+             data-type="Champagne"
+             data-prix="120 000 FCFA"
+             data-image="images/champagne-2.jpg"
              data-description="Un assemblage magistral des meilleurs crus. Un champagne de gastronomie, puissant, intense et parfaitement équilibré."
              onclick="ouvrirModal(this)">
           <div class="carte-vin-image">
@@ -203,18 +215,18 @@
             <p>Champagne — Épernay</p>
             <div class="carte-bas">
               <span class="prix">120 000 FCFA</span>
-              <button class="btn-carte" onclick="event.stopPropagation(); ajouterPanier('Cuvée Royale')">Ajouter</button>
+              <button class="btn-carte" onclick="event.stopPropagation(); ajouterPanier('Cuvée Royale', '120 000 FCFA', 'images/champagne-2.jpg')">Ajouter</button>
             </div>
           </div>
         </div>
 
-        <div class="carte-vin" 
-             data-categorie="rouge" 
-             data-nom="Velours de Provence" 
-             data-region="Provence" 
-             data-type="Vin rouge" 
-             data-prix="38 000 FCFA" 
-             data-image="images/vin-rouge-3.jpg" 
+        <div class="carte-vin"
+             data-categorie="rouge"
+             data-nom="Velours de Provence"
+             data-region="Provence"
+             data-type="Vin rouge"
+             data-prix="38 000 FCFA"
+             data-image="images/vin-rouge-3.jpg"
              data-description="Un vin solaire chargé d'histoire. Des notes de thym, de romarin et de fruits rouges compotés pour une dégustation chaleureuse."
              onclick="ouvrirModal(this)">
           <div class="carte-vin-image">
@@ -226,18 +238,18 @@
             <p>Vin rouge — Provence</p>
             <div class="carte-bas">
               <span class="prix">38 000 FCFA</span>
-              <button class="btn-carte" onclick="event.stopPropagation(); ajouterPanier('Velours de Provence')">Ajouter</button>
+              <button class="btn-carte" onclick="event.stopPropagation(); ajouterPanier('Velours de Provence', '38 000 FCFA', 'images/vin-rouge-3.jpg')">Ajouter</button>
             </div>
           </div>
         </div>
 
-        <div class="carte-vin" 
-             data-categorie="blanc" 
-             data-nom="Chablis Premier Cru" 
-             data-region="Bourgogne" 
-             data-type="Vin blanc" 
-             data-prix="55 000 FCFA" 
-             data-image="images/vin-blanc-4.jpg" 
+        <div class="carte-vin"
+             data-categorie="blanc"
+             data-nom="Chablis Premier Cru"
+             data-region="Bourgogne"
+             data-type="Vin blanc"
+             data-prix="55 000 FCFA"
+             data-image="images/vin-blanc-4.jpg"
              data-description="L'expression la plus pure du Chardonnay sur sol kimméridgien. Tension, pureté et une élégante finale saline."
              onclick="ouvrirModal(this)">
           <div class="carte-vin-image">
@@ -249,18 +261,18 @@
             <p>Vin blanc — Bourgogne</p>
             <div class="carte-bas">
               <span class="prix">55 000 FCFA</span>
-              <button class="btn-carte" onclick="event.stopPropagation(); ajouterPanier('Chablis Premier Cru')">Ajouter</button>
+              <button class="btn-carte" onclick="event.stopPropagation(); ajouterPanier('Chablis Premier Cru', '55 000 FCFA', 'images/vin-blanc-4.jpg')">Ajouter</button>
             </div>
           </div>
         </div>
 
-        <div class="carte-vin" 
-             data-categorie="rouge" 
-             data-nom="Nuit de Saint-Émilion" 
-             data-region="St-Émilion" 
-             data-type="Vin rouge" 
-             data-prix="75 000 FCFA" 
-             data-image="images/vin-rouge-4.jpg" 
+        <div class="carte-vin"
+             data-categorie="rouge"
+             data-nom="Nuit de Saint-Émilion"
+             data-region="St-Émilion"
+             data-type="Vin rouge"
+             data-prix="75 000 FCFA"
+             data-image="images/vin-rouge-4.jpg"
              data-description="Un Grand Cru de caractère. Dominante de Merlot offrant une rondeur exceptionnelle et des notes de prune et de chocolat."
              onclick="ouvrirModal(this)">
           <div class="carte-vin-image">
@@ -272,18 +284,18 @@
             <p>Vin rouge — Saint-Émilion</p>
             <div class="carte-bas">
               <span class="prix">75 000 FCFA</span>
-              <button class="btn-carte" onclick="event.stopPropagation(); ajouterPanier('Nuit de Saint-Émilion')">Ajouter</button>
+              <button class="btn-carte" onclick="event.stopPropagation(); ajouterPanier('Nuit de Saint-Émilion', '75 000 FCFA', 'images/vin-rouge-4.jpg')">Ajouter</button>
             </div>
           </div>
         </div>
 
-        <div class="carte-vin" 
-             data-categorie="champagne" 
-             data-nom="Grande Cuvée Millésimée" 
-             data-region="Côte des Blancs" 
-             data-type="Champagne" 
-             data-prix="95 000 FCFA" 
-             data-image="images/champagne-3.jpg" 
+        <div class="carte-vin"
+             data-categorie="champagne"
+             data-nom="Grande Cuvée Millésimée"
+             data-region="Côte des Blancs"
+             data-type="Champagne"
+             data-prix="95 000 FCFA"
+             data-image="images/champagne-3.jpg"
              data-description="Un millésime d'exception aux reflets d'or blanc. Une attaque vive suivie d'une richesse aromatique boisée et grillée."
              onclick="ouvrirModal(this)">
           <div class="carte-vin-image">
@@ -295,18 +307,18 @@
             <p>Champagne — Côte des Blancs</p>
             <div class="carte-bas">
               <span class="prix">95 000 FCFA</span>
-              <button class="btn-carte" onclick="event.stopPropagation(); ajouterPanier('Grande Cuvée Millésimée')">Ajouter</button>
+              <button class="btn-carte" onclick="event.stopPropagation(); ajouterPanier('Grande Cuvée Millésimée', '95 000 FCFA', 'images/champagne-3.jpg')">Ajouter</button>
             </div>
           </div>
         </div>
 
-        <div class="carte-vin" 
-             data-categorie="blanc" 
-             data-nom="Sancerre Blanc" 
-             data-region="Sancerre" 
-             data-type="Vin blanc" 
-             data-prix="48 000 FCFA" 
-             data-image="images/vin-blanc-5.jpg" 
+        <div class="carte-vin"
+             data-categorie="blanc"
+             data-nom="Sancerre Blanc"
+             data-region="Sancerre"
+             data-type="Vin blanc"
+             data-prix="48 000 FCFA"
+             data-image="images/vin-blanc-5.jpg"
              data-description="Un équilibre parfait entre acidité et fruit. Notes de pamplemousse et de fleurs de sureau pour ce grand classique de la Loire."
              onclick="ouvrirModal(this)">
           <div class="carte-vin-image">
@@ -318,7 +330,7 @@
             <p>Vin blanc — Sancerre</p>
             <div class="carte-bas">
               <span class="prix">48 000 FCFA</span>
-              <button class="btn-carte" onclick="event.stopPropagation(); ajouterPanier('Sancerre Blanc')">Ajouter</button>
+              <button class="btn-carte" onclick="event.stopPropagation(); ajouterPanier('Sancerre Blanc', '48 000 FCFA', 'images/vin-blanc-5.jpg')">Ajouter</button>
             </div>
           </div>
         </div>
@@ -328,6 +340,7 @@
 
   </main>
 
+  <!-- ========== PIED DE PAGE ========== -->
   <footer>
     <div class="footer-contenu">
       <img src="images/logo-2.png" alt="La Cave" class="footer-logo-img" />
@@ -344,6 +357,7 @@
     </div>
   </footer>
 
+  <!-- ========== MODAL DÉTAIL VIN ========== -->
   <div class="modal-overlay" id="modal-overlay" onclick="fermerModal()">
     <div class="modal-contenu" onclick="event.stopPropagation()">
       <button class="modal-fermer" onclick="fermerModal()">
@@ -369,6 +383,8 @@
     </div>
   </div>
 
+  <!-- Script principal — toutes les fonctions sont dans script.js -->
   <script src="script.js"></script>
+
 </body>
 </html>

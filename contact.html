@@ -13,16 +13,25 @@
 </head>
 <body>
 
-    <!-- BARRE DE NAVIGATION (Copie conforme de index.html) -->
-    <nav>
-        <div class="logo">🍷 La Cave</div>
-        <ul>
-            <li><a href="index.html">Accueil</a></li>
-            <li><a href="shop.html">Boutique</a></li>
-            <li><a href="a-propos.html">À Propos</a></li>
-            <li><a href="contact.html" class="actif">Contact</a></li>
-        </ul>
-    </nav>
+  <!-- ========== NAVIGATION ========== -->
+  <nav>
+    <a href="index.html" class="logo-nav">
+      <img src="images/logo-2.png" alt="La Cave" class="logo-img" />
+      <span class="logo-texte">LA CAVE</span>
+    </a>
+    <ul>
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="shop.html">Boutique</a></li>
+      <li><a href="a-propos.html">À Propos</a></li>
+      <li><a href="contact.html" class="actif">Contact</a></li>
+      <li>
+        <a href="panier.html">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span id="compteur-panier"></span>
+        </a>
+      </li>
+    </ul>
+  </nav>
 
     <main>
         <!-- SECTION CONTACT -->
@@ -68,12 +77,12 @@
                     
                     <div class="info-item">
                         <i class="fa-solid fa-location-dot"></i>
-                        <p>123 Rue des Vignes, Yaoundé, Cameroun</p>
+                        <p>Titi Garage, Yaoundé, Cameroun</p>
                     </div>
 
                     <div class="info-item">
                         <i class="fa-solid fa-phone"></i>
-                        <p>+237 6XX XXX XXX</p>
+                        <p>+237 620 10 01 52</p>
                     </div>
 
                     <div class="info-item">
@@ -91,11 +100,21 @@
         </section>
     </main>
 
-    <!-- PIED DE PAGE (Copie conforme de index.html) -->
-    <footer>
-        <p>&copy; 2025 La Cave — Tous droits réservés</p>
-        <p>Fait avec ❤️ par <a href="a-propos.html">notre équipe</a></p>
-    </footer>
+  <footer>
+    <div class="footer-contenu">
+      <img src="images/logo-2.png" alt="La Cave" class="footer-logo-img" />
+      <div class="footer-liens">
+        <a href="index.html">Accueil</a>
+        <a href="shop.html">Boutique</a>
+        <a href="a-propos.html">À Propos</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bas">
+      <p>&copy; 2025 La Cave — Tous droits réservés</p>
+      <p>Fait avec ❤️ par <a href="a-propos.html">notre équipe</a></p>
+    </div>
+  </footer>
 
     <!-- LIEN VERS LE SCRIPT (Indispensable pour le formulaire) -->
     <script src="script.js"></script>

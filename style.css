@@ -962,3 +962,422 @@ footer {
   margin-top: 3px;
   min-width: 20px;
 }
+
+/* =============================================
+   MODAL VIN (shop.html) + MODAL BIO (a-propos.html)
+   ============================================= */
+
+/* Overlay commun aux deux modals */
+.modal-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  z-index: 2000;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.modal-overlay.actif {
+  display: flex;
+}
+
+/* Bouton fermer */
+.modal-fermer {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: transparent;
+  border: none;
+  color: #aaa;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: var(--transition);
+  z-index: 10;
+}
+
+.modal-fermer:hover {
+  color: var(--couleur-principale);
+}
+
+/* ===== MODAL VIN ===== */
+.modal-contenu {
+  background-color: #fff;
+  max-width: 850px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+  max-height: 90vh;
+}
+
+.modal-corps {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.modal-image {
+  height: 100%;
+  min-height: 450px;
+  overflow: hidden;
+}
+
+.modal-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.modal-infos {
+  padding: 3rem 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 0.75rem;
+  background-color: var(--couleur-creme);
+}
+
+.modal-infos h2 {
+  font-family: var(--police-titre);
+  font-size: 2rem;
+  color: var(--couleur-sombre);
+  line-height: 1.2;
+}
+
+.modal-sous-titre {
+  color: #999;
+  font-size: 0.85rem;
+  letter-spacing: 1px;
+}
+
+.modal-description {
+  color: #666;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  border-top: 1px solid #e0d9c8;
+  padding-top: 1rem;
+  margin-top: 0.5rem;
+}
+
+.modal-pied {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid #e0d9c8;
+}
+
+/* ===== POPUP PANIER (toast) ===== */
+.popup-panier {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background-color: var(--couleur-sombre);
+  color: var(--couleur-creme);
+  padding: 1rem 1.5rem;
+  border-left: 3px solid var(--couleur-or);
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
+  z-index: 9999;
+  font-size: 0.85rem;
+  box-shadow: var(--ombre-forte);
+  animation: glisserEntree 0.3s ease;
+}
+
+@keyframes glisserEntree {
+  from { transform: translateX(100%); opacity: 0; }
+  to   { transform: translateX(0);    opacity: 1; }
+}
+
+.popup-panier a {
+  color: var(--couleur-or);
+  font-size: 0.78rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-bottom: 1px solid var(--couleur-or);
+  white-space: nowrap;
+}
+
+/* ===== PAGE PANIER ===== */
+.section-panier {
+  padding: 5rem 4rem;
+  background-color: var(--couleur-creme);
+  min-height: 80vh;
+}
+
+.panier-vide {
+  text-align: center;
+  padding: 4rem 0;
+  color: #999;
+}
+
+.panier-vide i {
+  font-size: 3rem;
+  color: var(--couleur-or);
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.panier-vide p {
+  font-size: 1.1rem;
+  margin-bottom: 2rem;
+}
+
+.panier-article {
+  display: grid;
+  grid-template-columns: 80px 1fr auto auto auto;
+  align-items: center;
+  gap: 1.5rem;
+  background-color: #fff;
+  padding: 1.25rem;
+  margin-bottom: 1rem;
+  box-shadow: var(--ombre);
+}
+
+.panier-article-img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+}
+
+.panier-article-infos h3 {
+  font-family: var(--police-titre);
+  font-size: 1.15rem;
+  color: var(--couleur-sombre);
+  margin-bottom: 0.25rem;
+}
+
+.panier-article-infos p {
+  color: #999;
+  font-size: 0.85rem;
+}
+
+.panier-quantite {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.panier-quantite button {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #ddd;
+  background: transparent;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: var(--transition);
+  color: var(--couleur-texte);
+}
+
+.panier-quantite button:hover {
+  background-color: var(--couleur-principale);
+  color: #fff;
+  border-color: var(--couleur-principale);
+}
+
+.panier-quantite span {
+  font-family: var(--police-titre);
+  font-size: 1.2rem;
+  min-width: 20px;
+  text-align: center;
+}
+
+.panier-article-total {
+  font-family: var(--police-titre);
+  font-size: 1.2rem;
+  color: var(--couleur-principale);
+  font-weight: 600;
+  min-width: 120px;
+  text-align: right;
+}
+
+.panier-supprimer {
+  background: transparent;
+  border: none;
+  color: #ccc;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: var(--transition);
+  padding: 0.5rem;
+}
+
+.panier-supprimer:hover {
+  color: var(--couleur-principale);
+}
+
+.panier-total-ligne {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2rem 0;
+  border-top: 2px solid var(--couleur-or);
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.panier-total-ligne .prix {
+  font-size: 2rem;
+}
+
+.panier-boutons {
+  display: flex;
+  gap: 1rem;
+  justify-content: flex-end;
+  margin-top: 1.5rem;
+}
+
+/* Checkout */
+.paiement-options {
+  display: flex;
+  gap: 2rem;
+  margin: 1rem 0 1.5rem;
+  flex-wrap: wrap;
+}
+
+.paiement-options label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-size: 0.95rem;
+  color: var(--couleur-texte);
+}
+
+#section-checkout {
+  margin-top: 3rem;
+  padding-top: 3rem;
+  border-top: 1px solid #ddd;
+  max-width: 700px;
+}
+
+#detail-paiement {
+  margin: 1rem 0;
+  padding: 1.5rem;
+  background-color: #fff;
+  border-left: 3px solid var(--couleur-or);
+}
+
+.commande-succes {
+  text-align: center;
+  padding: 4rem 2rem;
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.commande-succes i {
+  font-size: 4rem;
+  color: var(--couleur-or);
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.commande-succes h2 {
+  font-family: var(--police-titre);
+  font-size: 2.5rem;
+  color: var(--couleur-sombre);
+  margin-bottom: 1rem;
+}
+
+.commande-succes p {
+  color: #666;
+  margin-bottom: 2rem;
+  line-height: 1.7;
+}
+
+/* ===== MODAL BIOGRAPHIE (a-propos.html) ===== */
+.bio-modal {
+  background-color: #fff;
+  max-width: 700px;
+  width: 100%;
+  position: relative;
+  overflow: hidden;
+}
+
+.bio-modal-corps {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  min-height: 350px;
+}
+
+.bio-photo-wrapper {
+  width: 180px;
+  height: 100%;
+  min-height: 350px;
+  background-color: var(--couleur-sombre);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.bio-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.bio-infos {
+  padding: 2.5rem;
+  background-color: var(--couleur-creme);
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.bio-infos h2 {
+  font-family: var(--police-titre);
+  font-size: 1.8rem;
+  color: var(--couleur-sombre);
+}
+
+.bio-role {
+  color: var(--couleur-or);
+  font-size: 0.85rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.bio-separateur {
+  border: none;
+  border-top: 1px solid #ddd;
+  margin: 0.75rem 0;
+}
+
+.bio-texte {
+  color: #666;
+  font-size: 0.9rem;
+  line-height: 1.8;
+}
+
+.bio-competences-section {
+  margin-top: 0.75rem;
+}
+
+.bio-competences-titre {
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #aaa;
+  margin-bottom: 0.5rem;
+}
+
+.bio-competences-liste {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.badge-competence {
+  background-color: var(--couleur-sombre);
+  color: var(--couleur-or);
+  font-size: 0.72rem;
+  letter-spacing: 1px;
+  padding: 0.3rem 0.75rem;
+  text-transform: uppercase;
+}
