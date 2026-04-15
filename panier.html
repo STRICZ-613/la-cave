@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mon Panier — La Cave</title>
+  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+</head>
+
+<body>
+
+  <!-- ============================================================ -->
+  <!-- NAVBAR -->
+  <!-- ============================================================ -->
+  <nav>
+    <a href="index.html" class="logo-nav">
+      <img src="images/logo-2.png" alt="La Cave" class="logo-img" />
+      <span class="logo-texte">LA CAVE</span>
+    </a>
+    <ul>
+      <li><a href="index.html">Accueil</a></li>
+      <li><a href="shop.html">Boutique</a></li>
+      <li><a href="a-propos.html">À Propos</a></li>
+      <li><a href="contact.html">Contact</a></li>
+      <li>
+        <a href="panier.html" class="actif">
+          <i class="fa-solid fa-cart-shopping"></i>
+          <span id="compteur-panier"></span>
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <!-- ============================================================ -->
+  <!-- CONTENU PRINCIPAL -->
+  <!-- ============================================================ -->
+  <main>
+
+    <!-- SECTION 1 — En-tête du panier -->
+    <section class="section-panier">
+      <p class="label-section">Mon Panier</p>
+      <h2 class="titre-section">Votre Sélection</h2>
+
+      <!-- SECTION 2 — Liste des articles (générée dynamiquement) -->
+      <div id="liste-panier">
+        <!-- Contenu injecté par chargerPanier() -->
+      </div>
+
+      <!-- SECTION 3 — Total et actions (affiché si panier non vide) -->
+      <div id="panier-actions" style="display:none;">
+        <div class="panier-total-ligne">
+          <span>Total</span>
+          <span id="panier-total" class="prix"></span>
+        </div>
+        <div class="panier-boutons">
+          <a href="shop.html" class="btn-contour">
+            ← Continuer les achats
+          </a>
+          <button class="btn-principal" onclick="afficherCheckout()">
+            Commander <i class="fa-solid fa-arrow-right"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- SECTION 4 — Formulaire Checkout (caché par défaut) -->
+      <div id="section-checkout" style="display:none;">
+        <h2 class="titre-section">Finaliser la Commande</h2>
+
+        <!-- Champs personnels -->
+        <div class="champ">
+          <label for="checkout-nom">Nom complet</label>
+          <input type="text" id="checkout-nom" placeholder="Votre nom complet" />
+        </div>
+        <div class="champ">
+          <label for="checkout-email">Adresse email</label>
+          <input type="email" id="checkout-email" placeholder="votre@email.com" />
+        </div>
+        <div class="champ">
+          <label for="checkout-tel">Téléphone</label>
+          <input type="tel" id="checkout-tel" placeholder="+237 6XX XXX XXX" />
+        </div>
+
+        <!-- Choix de la méthode de paiement -->
+        <p>Méthode de paiement</p>
+        <div class="paiement-options">
+          <label>
+            <input type="radio" name="paiement" value="momo" onclick="afficherMethode(this.value)" />
+            📱 Mobile Money (Momo)
+          </label>
+          <label>
+            <input type="radio" name="paiement" value="carte" onclick="afficherMethode(this.value)" />
+            💳 Carte Bancaire
+          </label>
+          <label>
+            <input type="radio" name="paiement" value="cash" onclick="afficherMethode(this.value)" />
+            💵 Cash à la livraison
+          </label>
+        </div>
+
+        <!-- Zone de détails selon la méthode choisie -->
+        <div id="detail-paiement">
+
+          <!-- Détails Mobile Money -->
+          <div id="detail-momo" style="display:none;">
+            <div class="champ">
+              <label for="momo-numero">Numéro bénéficiaire</label>
+              <input type="tel" id="momo-numero" placeholder="+237 6XX XXX XXX" />
+            </div>
+            <div class="champ">
+              <label for="momo-montant">Montant à payer</label>
+              <input type="text" id="momo-montant" readonly />
+            </div>
+          </div>
+
+          <!-- Détails Carte Bancaire -->
+          <div id="detail-carte" style="display:none;">
+            <div class="champ">
+              <label for="carte-numero">Numéro de carte</label>
+              <input type="text" id="carte-numero" maxlength="16" placeholder="1234 5678 9012 3456" />
+            </div>
+            <div class="champ">
+              <label for="carte-pin">Code PIN</label>
+              <input type="password" id="carte-pin" maxlength="4" placeholder="••••" />
+            </div>
+          </div>
+
+          <!-- Détails Cash -->
+          <div id="detail-cash" style="display:none;">
+            <p>Vous paierez à la livraison. Merci de préparer le montant exact.</p>
+          </div>
+
+        </div><!-- fin #detail-paiement -->
+
+        <!-- Bouton de confirmation -->
+        <button class="btn-principal" onclick="confirmerCommande()">
+          Confirmer la commande
+          <i class="fa-solid fa-check"></i>
+        </button>
+
+      </div><!-- fin #section-checkout -->
+
+      <!-- Message de succès (caché par défaut) -->
+      <div id="message-succes" style="display:none;">
+        <div class="commande-succes">
+          <i class="fa-solid fa-circle-check"></i>
+          <h2>Commande Confirmée !</h2>
+          <p id="texte-succes"></p>
+          <a href="index.html" class="btn-principal">
+            Retour à l'accueil
+          </a>
+        </div>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- ============================================================ -->
+  <!-- FOOTER -->
+  <!-- ============================================================ -->
+  <footer>
+    <div class="footer-contenu">
+      <img src="images/logo-2.png" alt="La Cave" class="footer-logo-img" />
+      <div class="footer-liens">
+        <a href="index.html">Accueil</a>
+        <a href="shop.html">Boutique</a>
+        <a href="a-propos.html">À Propos</a>
+        <a href="contact.html">Contact</a>
+      </div>
+    </div>
+    <div class="footer-bas">
+      <p>&copy; 2025 La Cave — Tous droits réservés</p>
+      <p>Fait avec ❤️ par <a href="a-propos.html">notre équipe</a></p>
+    </div>
+  </footer>
+
+  <!-- ============================================================ -->
+  <!-- SCRIPTS JAVASCRIPT — Fonctions spécifiques au panier -->
+  <!-- ============================================================ -->
+  <script src="script.js"></script>
+  <script>
+
+    // ----------------------------------------------------------
+    // chargerPanier()
+    // Génère dynamiquement le contenu du panier au chargement
+    // ----------------------------------------------------------
+    function chargerPanier() {
+      const panier = JSON.parse(localStorage.getItem('panier-lacave')) || [];
+      const listePanier = document.getElementById('liste-panier');
+      const panierActions = document.getElementById('panier-actions');
+
+      // Vider le contenu actuel
+      listePanier.innerHTML = '';
+
+      // Cas : panier vide
+      if (panier.length === 0) {
+        listePanier.innerHTML = `
+          <div class="panier-vide">
+            <i class="fa-solid fa-wine-bottle"></i>
+            <p>Votre panier est vide.</p>
+            <a href="shop.html" class="btn-principal">Voir la Boutique</a>
+          </div>
+        `;
+        panierActions.style.display = 'none';
+        mettreAJourCompteurPanier();
+        return;
+      }
+
+      // Cas : panier non vide — afficher chaque article
+      let totalGeneral = 0;
+
+      panier.forEach(function(article) {
+        // Extraire le montant numérique du prix (ex: "45 000 FCFA" → 45000)
+        const montantUnitaire = parseInt(article.prix.replace(/\s/g, '').replace('FCFA', ''));
+        const sousTotal = montantUnitaire * article.quantite;
+        totalGeneral += sousTotal;
+
+        // Échapper le nom pour l'utilisation dans les attributs onclick
+        const nomEchape = article.nom.replace(/'/g, "\\'");
+
+        const articleHTML = `
+          <div class="panier-article">
+            <img src="${article.image}" alt="${article.nom}" class="panier-article-img" />
+            <div class="panier-article-infos">
+              <h3>${article.nom}</h3>
+              <p>${article.prix} / unité</p>
+            </div>
+            <div class="panier-quantite">
+              <button onclick="changerQuantite('${nomEchape}', -1)">−</button>
+              <span>${article.quantite}</span>
+              <button onclick="changerQuantite('${nomEchape}', 1)">+</button>
+            </div>
+            <div class="panier-article-total">
+              ${sousTotal.toLocaleString('fr-FR')} FCFA
+            </div>
+            <button class="panier-supprimer" onclick="supprimerArticle('${nomEchape}')">
+              <i class="fa-solid fa-trash"></i>
+            </button>
+          </div>
+        `;
+        listePanier.innerHTML += articleHTML;
+      });
+
+      // Afficher le total et les boutons d'action
+      document.getElementById('panier-total').textContent = totalGeneral.toLocaleString('fr-FR') + ' FCFA';
+      panierActions.style.display = 'block';
+
+      // Mettre à jour le compteur navbar
+      mettreAJourCompteurPanier();
+    }
+
+    // ----------------------------------------------------------
+    // changerQuantite(nom, delta)
+    // Augmente ou diminue la quantité d'un article
+    // ----------------------------------------------------------
+    function changerQuantite(nom, delta) {
+      let panier = JSON.parse(localStorage.getItem('panier-lacave')) || [];
+
+      const index = panier.findIndex(function(article) {
+        return article.nom === nom;
+      });
+
+      if (index !== -1) {
+        panier[index].quantite += delta;
+
+        // Si la quantité tombe à 0 ou moins, supprimer l'article
+        if (panier[index].quantite <= 0) {
+          panier.splice(index, 1);
+        }
+      }
+
+      // Sauvegarder et recharger l'affichage
+      localStorage.setItem('panier-lacave', JSON.stringify(panier));
+      chargerPanier();
+    }
+
+    // ----------------------------------------------------------
+    // supprimerArticle(nom)
+    // Supprime un article du panier
+    // ----------------------------------------------------------
+    function supprimerArticle(nom) {
+      let panier = JSON.parse(localStorage.getItem('panier-lacave')) || [];
+
+      // Filtrer pour retirer l'article correspondant
+      panier = panier.filter(function(article) {
+        return article.nom !== nom;
+      });
+
+      // Sauvegarder et recharger
+      localStorage.setItem('panier-lacave', JSON.stringify(panier));
+      chargerPanier();
+    }
+
+    // ----------------------------------------------------------
+    // afficherCheckout()
+    // Révèle le formulaire de commande et pré-remplit le montant
+    // ----------------------------------------------------------
+    function afficherCheckout() {
+      const sectionCheckout = document.getElementById('section-checkout');
+      sectionCheckout.style.display = 'block';
+
+      // Remplir automatiquement le montant Momo avec le total du panier
+      const totalTexte = document.getElementById('panier-total').textContent;
+      document.getElementById('momo-montant').value = totalTexte;
+
+      // Faire défiler la page jusqu'au formulaire
+      sectionCheckout.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // ----------------------------------------------------------
+    // afficherMethode(methode)
+    // Affiche uniquement les détails de la méthode choisie
+    // ----------------------------------------------------------
+    function afficherMethode(methode) {
+      // Cacher tous les blocs de détails
+      document.getElementById('detail-momo').style.display = 'none';
+      document.getElementById('detail-carte').style.display = 'none';
+      document.getElementById('detail-cash').style.display = 'none';
+
+      // Afficher uniquement le bloc correspondant
+      document.getElementById('detail-' + methode).style.display = 'block';
+    }
+
+    // ----------------------------------------------------------
+    // confirmerCommande()
+    // Valide et confirme la commande
+    // ----------------------------------------------------------
+    function confirmerCommande() {
+      // Lire les champs personnels
+      const nom = document.getElementById('checkout-nom').value.trim();
+      const email = document.getElementById('checkout-email').value.trim();
+      const tel = document.getElementById('checkout-tel').value.trim();
+
+      // Vérifier que les champs personnels sont remplis
+      if (!nom || !email || !tel) {
+        alert('Veuillez remplir vos informations personnelles (nom, email, téléphone).');
+        return;
+      }
+
+      // Vérifier qu'une méthode de paiement est sélectionnée
+      const methodeSelectionnee = document.querySelector('input[name="paiement"]:checked');
+      if (!methodeSelectionnee) {
+        alert('Veuillez choisir une méthode de paiement.');
+        return;
+      }
+
+      const methode = methodeSelectionnee.value;
+
+      // Vérifier les champs selon la méthode choisie
+      if (methode === 'momo') {
+        const numero = document.getElementById('momo-numero').value.trim();
+        if (!numero) {
+          alert('Veuillez entrer votre numéro bénéficiaire pour le Mobile Money.');
+          return;
+        }
+      } else if (methode === 'carte') {
+        const numeroCarte = document.getElementById('carte-numero').value.trim();
+        const pin = document.getElementById('carte-pin').value.trim();
+        if (numeroCarte.length !== 16) {
+          alert('Le numéro de carte doit contenir 16 chiffres.');
+          return;
+        }
+        if (pin.length !== 4) {
+          alert('Le code PIN doit contenir 4 chiffres.');
+          return;
+        }
+      }
+      // Pour "cash", aucune vérification supplémentaire
+
+      // ✅ Tout est valide : confirmer la commande
+      // Vider le panier dans localStorage
+      localStorage.removeItem('panier-lacave');
+
+      // Cacher le formulaire checkout
+      document.getElementById('section-checkout').style.display = 'none';
+
+      // Afficher le message de succès
+      const messageSucces = document.getElementById('message-succes');
+      messageSucces.style.display = 'block';
+
+      // Remplir le texte de confirmation
+      document.getElementById('texte-succes').textContent =
+        'Merci ' + nom + ' ! Votre commande a bien été reçue. Vous serez contacté(e) sous 24h pour la livraison.';
+
+      // Mettre à jour le compteur (panier vide)
+      mettreAJourCompteurPanier();
+
+      // Faire défiler vers le message de succès
+      messageSucces.scrollIntoView({ behavior: 'smooth' });
+    }
+
+    // ----------------------------------------------------------
+    // Charger le panier au chargement de la page
+    // ----------------------------------------------------------
+    window.onload = chargerPanier;
+
+  </script>
+
+</body>
+</html>
